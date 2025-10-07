@@ -114,24 +114,13 @@ bind -n M-L next-window
 
 set -g @catppuccin_flavour 'mocha'
 
+# Set al Plugins options
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'dreamsofcode-io/catppuccin-tmux'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-copycat'
-
-run '~/.tmux/plugins/tpm/tpm'
-
-# set vi-mode
-set-window-option -g mode-keys vi
-# keybindings
-bind-key -T copy-mode-vi v send-keys -X begin-selection
-bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-
-bind '"' split-window -v -c "#{pane_current_path}"
-bind % split-window -h -c "#{pane_current_path}"
 
 run '~/.tmux/plugins/tpm/tpm'
 
