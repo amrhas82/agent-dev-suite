@@ -181,6 +181,12 @@ git status
 
 2. **Create the tmux configuration:**
 ```bash
+# search for it
+ls -a ~ | grep .tmux.conf
+
+# or wider search
+find / -name "tmux.conf" 2>/dev/null
+
 # Create the file
 nano ~/.tmux.conf
 
