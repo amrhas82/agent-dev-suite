@@ -71,6 +71,8 @@ git --version
 
 ### Complete Tmux Configuration
 Create or edit `~/.tmux.conf`:
+mkdir ~/.tmuf.conf
+nano ~/.tmuf.conf
 
 ```tmux
 # Better color support
@@ -78,6 +80,10 @@ set-option -sa terminal-overrides ",xterm*:Tc"
 
 # Enable mouse support
 set -g mouse on
+
+# Make Prefix + r to reload tmux.conf
+unbind r
+bind r source-file ~/.tmux.conf
 
 # Change prefix from Ctrl+b to Ctrl+Space
 unbind C-b
