@@ -147,6 +147,15 @@ bind % split-window -h -c "#{pane_current_path}"
 1. **Install Tmux Plugin Manager:**
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+#check if you have git installed 
+ls ~/.tmux/plugins/tpm
+
+#go to git location
+cd ~/.tmux/plugins/tpm
+
+#check git status
+git status
 ```
 
 2. **Create the tmux configuration:**
