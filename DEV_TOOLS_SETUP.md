@@ -9,6 +9,15 @@
 
 ## Terminal Tools
 
+### Claude code
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+# Or install stable version (default)
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
 ### Ghostty Terminal
 ```bash
 sudo snap install ghostty --classic
