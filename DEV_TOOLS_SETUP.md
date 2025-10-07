@@ -13,7 +13,8 @@
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
-# Or install stable version (default)
+
+### Or install stable version (default)
 ```bash
 curl -fsSL https://claude.ai/install.sh | bash
 ```
