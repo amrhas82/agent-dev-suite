@@ -12,10 +12,8 @@
 ### Claude code
 ```bash
 npm install -g @anthropic-ai/claude-code
-```
 
-### Or install stable version (default)
-```bash
+#Install stable version (default)
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
