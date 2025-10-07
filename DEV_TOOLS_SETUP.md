@@ -83,7 +83,7 @@ set -g mouse on
 
 # Make Prefix + r to reload tmux.conf
 unbind r
-bind r source-file ~/.tmux.conf
+bind r source ~/.tmux.conf
 
 # Change prefix from Ctrl+b to Ctrl+Space
 unbind C-b
