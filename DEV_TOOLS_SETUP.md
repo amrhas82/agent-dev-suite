@@ -243,6 +243,9 @@ return M
 - `tmux kill-session` = kill current session
 - `tmux kill-session -t session_name` = close certain session
 - `exit` = closes that window/pane
+- `tmux new -s agent-ai` = create new session with a name
+- `tmux rename-window "Agent AI"` = close rename current session
+- `tmux source ~/.tmux.conf` = reload tmux.conf
 
 
 **Copy Mode (Vi-style):**
