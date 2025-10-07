@@ -75,22 +75,18 @@ mkdir ~/.tmuf.conf
 nano ~/.tmuf.conf
 
 ```tmux
-# Better color support
 set-option -sa terminal-overrides ",xterm*:Tc"
-
-# Enable mouse support
 set -g mouse on
 
-# Make Prefix + r to reload tmux.conf
-unbind r
-bind r source ~/.tmux.conf
-
-# Change prefix from Ctrl+b to Ctrl+Space
+# Change Prefix from Ctrl+b to Ctrl+Space
 unbind C-b
 set -g prefix C-Space
 bind C-Space send-prefix
 
-# Vim style pane selection with prefix
+# Fix backspace issue
+set -g default-terminal "xterm-256color"
+
+# Vim style pane selection
 bind h select-pane -L
 bind j select-pane -D 
 bind k select-pane -U
@@ -116,28 +112,36 @@ bind -n S-Right next-window
 bind -n M-H previous-window
 bind -n M-L next-window
 
-# Catppuccin theme
 set -g @catppuccin_flavour 'mocha'
 
-# Plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'dreamsofcode-io/catppuccin-tmux'
 set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-copycat'
 
-# Initialize TMUX plugin manager
 run '~/.tmux/plugins/tpm/tpm'
 
-# Vi-mode for copy mode
+# set vi-mode
 set-window-option -g mode-keys vi
-
-# Keybindings for copy mode
+# keybindings
 bind-key -T copy-mode-vi v send-keys -X begin-selection
 bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
 bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 
-# Split windows with current path
+bind '"' split-window -v -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+
+run '~/.tmux/plugins/tpm/tpm'
+
+# set vi-mode
+set-window-option -g mode-keys vi
+# keybindings
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
 bind '"' split-window -v -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 ```
@@ -242,11 +246,11 @@ return M
 - `tmux kill server` = exit all terminals
 - `tmux kill-session` = kill current session
 - `tmux kill-session -t session_name` = close certain session
+- `tmux kill-session -a` = kill all sessions but current
 - `exit` = closes that window/pane
 - `tmux new -s agent-ai` = create new session with a name
 - `tmux rename-window "Agent AI"` = close rename current session
 - `tmux source ~/.tmux.conf` = reload tmux.conf
-
 
 **Copy Mode (Vi-style):**
 - `Prefix + [` - Enter copy mode
