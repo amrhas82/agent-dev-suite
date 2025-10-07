@@ -7,7 +7,7 @@ tmux plugin manager > git clone https://github.com/tmux-plugins/tpm ~/.tmux/plug
 ##CONFIG > nano ~/.tmux.conf  # You can use any text editor, e.g., vim, nano, or code
 
 
-vim tmux navigator
+	vim tmux navigator
 cd ~/.config/nvim
 
 lua/custom/configs
@@ -22,17 +22,17 @@ local plugins = {
 
 > mappings.lua
 
-M.general = {
-	n = {
-		["<C-h>"] = {"<cmd>" TmuxNavigateLeft<CR>, "window left"},
-		["<C-l>"] = {"<cmd>" TmuxNavigateLeft<CR>, "window right"},
-		["<C-j>"] = {"<cmd>" TmuxNavigateLeft<CR>, "window down"},
-		["<C-k>"] = {"<cmd>" TmuxNavigateLeft<CR>, "window up"},
-		}
-}
+	M.general = {
+		n = {
+			["<C-h>"] = {"<cmd>" TmuxNavigateLeft<CR>, "window left"},
+			["<C-l>"] = {"<cmd>" TmuxNavigateLeft<CR>, "window right"},
+			["<C-j>"] = {"<cmd>" TmuxNavigateLeft<CR>, "window down"},
+			["<C-k>"] = {"<cmd>" TmuxNavigateLeft<CR>, "window up"},
+			}
+	}
 
 > tmux.config
-set -g @plugin 'christoomey/vim-tmux-navigator'
-run '~/.tmux/plugins/tpm/tpm'
+	set -g @plugin 'christoomey/vim-tmux-navigator'
+	run '~/.tmux/plugins/tpm/tpm'
 
 > tmux source ~/.config/tmux/tmux.conf
