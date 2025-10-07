@@ -76,12 +76,17 @@ nano ~/.tmuf.conf
 
 ```tmux
 set-option -sa terminal-overrides ",xterm*:Tc"
+
+# Turn mouse on
 set -g mouse on
 
-# Change Prefix from Ctrl+b to Ctrl+Space
+# Change Prefix from Ctrl+b to Ctrl+a
 unbind C-b
-set -g prefix C-Space
-bind C-Space send-prefix
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# tmux.conf hot reload
+bind r source-file ~/.tmux.conf\; display "Reloaded!"
 
 # Fix backspace issue
 set -g default-terminal "xterm-256color"
@@ -112,7 +117,30 @@ bind -n S-Right next-window
 bind -n M-H previous-window
 bind -n M-L next-window
 
+# set catpuccin color them
 set -g @catppuccin_flavour 'mocha'
+# Configure the catppuccin plugin
+set -g @catppuccin_flavor "mocha"
+set -g @catppuccin_window_status_style "rounded"
+
+# Load catppuccin
+run ~/.config/tmux/plugins/catppuccin/tmux/catppuccin.tmux
+# For TPM, instead use `run ~/.tmux/plugins/tmux/catppuccin.tmux`
+
+# Make the status line pretty and add some modules
+set -g status-right-length 100
+set -g status-left-length 100
+set -g status-left ""
+set -g status-right "#{E:@catppuccin_status_application}"
+set -agF status-right "#{E:@catppuccin_status_cpu}"
+set -ag status-right "#{E:@catppuccin_status_session}"
+set -ag status-right "#{E:@catppuccin_status_uptime}"
+set -agF status-right "#{E:@catppuccin_status_battery}"
+
+run ~/.config/tmux/plugins/tmux-plugins/tmux-cpu/cpu.tmux
+run ~/.config/tmux/plugins/tmux-plugins/tmux-battery/battery.tmux
+# Or, if using TPM, just run TPM
+
 
 # Set al Plugins options
 set -g @plugin 'tmux-plugins/tpm'
