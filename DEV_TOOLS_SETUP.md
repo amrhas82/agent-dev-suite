@@ -232,6 +232,19 @@ return M
 - `"` - Split window vertically
 - `%` - Split window horizontally
 
+**Others:**
+- Prefix + c = create new window
+- Prefix + 1 = window selection
+- tmux ls = list all windows
+- Prefix + % = split horizontal
+- Prefix + " = split vertical
+- Prefix + R = search commands
+- tmux kill server = exit all terminals
+- tmux kill-session = kill current session
+- tmux kill-session -t session_name = close certain session
+- exit = closes that window/pane
+
+
 **Copy Mode (Vi-style):**
 - `Prefix + [` - Enter copy mode
 - `v` - Begin selection
