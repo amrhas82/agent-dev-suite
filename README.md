@@ -1,195 +1,185 @@
-# 🚀 AI Dev Tasks 🤖
+# AI-PRDs: Development Environment & Agent Workflow Setup
 
-Welcome to **AI Dev Tasks**! This repository provides a collection of markdown files designed to supercharge your feature development workflow with AI-powered IDEs and CLIs. Originally built for [Cursor](https://cursor.sh/), these tools work with any AI coding assistant including Claude Code, Windsurf, and others. By leveraging these structured prompts, you can systematically approach building features, from ideation to implementation, with built-in checkpoints for verification.
+A comprehensive repository providing both Ubuntu/Debian development environment setup tools and AI agent workflow guides for structured feature development.
 
-Stop wrestling with monolithic AI requests and start guiding your AI collaborator step-by-step!
+> **Note:** All setup tools and scripts are designed exclusively for **Ubuntu/Debian** Linux distributions.
 
-## ✨ The Core Idea
+## 📁 Repository Structure
 
-Building complex features with AI can sometimes feel like a black box. This workflow aims to bring structure, clarity, and control to the process by:
+### `/tools` - Development Environment Setup
 
-1. **Defining Scope:** Clearly outlining what needs to be built with a Product Requirement Document (PRD).
-2. **Detailed Planning:** Breaking down the PRD into a granular, actionable task list.
-3. **Iterative Implementation:** Guiding the AI to tackle one task at a time, allowing you to review and approve each change.
+This directory contains scripts and configuration files to set up your complete development environment on Ubuntu/Debian systems. You can install tools manually, use automated scripts, or run an interactive menu.
 
-This structured approach helps ensure the AI stays on track, makes it easier to debug issues, and gives you confidence in the generated code.
+**Files:**
 
-## Workflow: From Idea to Implemented Feature 💡➡️💻
+- **`dev_tools_menu.sh`** - Interactive menu system for installing development tools
+  - Choose individual tools or install everything at once
+  - Includes: Claude Code, Ghostty Terminal, Tmux + TPM, Neovim, AmpCode, Lazygit, Git updates, PyCharm Community
+  - Color-coded output with installation status tracking
+  - Usage: `chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh`
 
-Here's the step-by-step process using the `.md` files in this repository:
+- **`master_tmux_setup.sh`** - Complete Tmux installation and configuration script
+  - Builds Tmux from source
+  - Installs Tmux Plugin Manager (TPM)
+  - Configures tmux.conf with Catppuccin theme
+  - Sets up vim-style navigation and custom keybindings
+  - Automatically installs all plugins
 
-### 1️⃣ Create a Product Requirement Document (PRD)
+- **`master_neovim_setup.sh`** - Complete Neovim installation and configuration script
+  - Installs latest Neovim via PPA
+  - Sets up nvim-tree file explorer
+  - Configures Tokyonight theme and lualine
+  - Integrates Lazygit, Telescope, Treesitter
+  - Includes vim-plug and all necessary plugins
 
-First, lay out the blueprint for your feature. A PRD clarifies what you're building, for whom, and why.
+- **`manual_setup.md`** - Step-by-step manual installation guide
+  - Terminal tools (Claude Code, Ghostty, Tmux + TPM)
+  - Development tools (Neovim, AmpCode)
+  - Git tools (Lazygit, Git version updates)
+  - Detailed Tmux and Neovim configuration instructions
+  - Key binding reference and installation checklist
 
-You can create a lightweight PRD directly within your AI tool of choice:
+- **`tmux-install-guide.md`** - Comprehensive Tmux installation guide
+  - Building from source instructions
+  - TPM (Tmux Plugin Manager) setup
+  - Troubleshooting common issues
+  - Sample configuration with explanations
+  - Plugin management commands
 
-1. Ensure you have the `create-prd.md` file from this repository accessible.
-2. In your AI tool, initiate PRD creation:
+- **`tmux.conf`** - Production-ready Tmux configuration file
+  - Custom prefix key (Ctrl+a instead of Ctrl+b)
+  - Vim-style pane navigation
+  - Catppuccin Mocha color theme
+  - Multiple navigation methods (vim keys, arrow keys)
+  - Vi-mode copy/paste
+  - Auto-renumbering windows
+  - Plugin integration (TPM, vim-tmux-navigator, catppuccin, yank, copycat)
 
-    ```text
-    Use @create-prd.md
-    Here's the feature I want to build: [Describe your feature in detail]
-    Reference these files to help you: [Optional: @file1.py @file2.ts]
-    ```
-    *(Pro Tip: For Cursor users, MAX mode is recommended for complex PRDs if your budget allows for more comprehensive generation.)*
+### `/agents_guide` - AI Agent Workflow
 
-    ![Example of initiating PRD creation](https://pbs.twimg.com/media/Go6DDlyX0AAS7JE?format=jpg&name=large)
+This directory contains the original AI Dev Tasks workflow - a structured 3-step process for building features with AI-powered IDEs and CLIs (Cursor, Claude Code, Windsurf, etc.).
 
-### 2️⃣ Generate Your Task List from the PRD
+**Core Workflow Files:**
 
-With your PRD drafted (e.g., `MyFeature-PRD.md`), the next step is to generate a detailed, step-by-step implementation plan for your AI Developer.
+- **`1-create-prd.md`** - Product Requirement Document (PRD) generation guide
+  - Instructions for AI to generate detailed PRDs
+  - Clarifying questions template
+  - PRD structure (goals, user stories, functional requirements, success metrics)
+  - Designed for junior developer comprehension
+  - Saves to `/tasks/[n]-prd-[feature-name].md`
 
-1. Ensure you have `generate-tasks.md` accessible.
-2. In your AI tool, use the PRD to create tasks:
+- **`2-generate-tasks.md`** - Task list generation from PRD
+  - Analyzes PRD and current codebase
+  - Two-phase process: high-level tasks, then sub-tasks
+  - Identifies relevant files and test files
+  - Creates actionable, step-by-step implementation plan
+  - Saves to `/tasks/tasks-[prd-file-name].md`
 
-    ```text
-    Now take @MyFeature-PRD.md and create tasks using @generate-tasks.md
-    ```
-    *(Note: Replace `@MyFeature-PRD.md` with the actual filename of the PRD you generated in step 1.)*
+- **`3-process-task-list.md`** - Task execution and tracking guide
+  - One sub-task at a time implementation
+  - Completion protocol with git commits
+  - Test-driven workflow (tests must pass before commits)
+  - Conventional commit format
+  - Progress tracking and file maintenance
 
-    ![Example of generating tasks from PRD](https://pbs.twimg.com/media/Go6FITbWkAA-RCT?format=jpg&name=medium)
+**Additional Guides:**
 
-### 3️⃣ Examine Your Task List
+- **`agents_guide.md`** - Complete workflow documentation (original README)
+  - Overview of the 3-step process (PRD → Tasks → Implementation)
+  - Tool-specific instructions (Cursor, Claude Code, other IDEs)
+  - Best practices and tips for success
+  - Video demonstration and examples
 
-You'll now have a well-structured task list, often with tasks and sub-tasks, ready for the AI to start working on. This provides a clear roadmap for implementation.
+- **`AGENT_RULES.md`** - Communication and work preferences
+  - How to work with AI agents effectively
+  - Tool preferences (DeepSeek, Replit, Claude)
+  - Tech stack preferences (Node.js, TypeScript, React, Tailwind, PostgreSQL, etc.)
+  - Development workflow and deployment strategy
+  - Core principles: simplicity, open-source, no vendor lock-in
 
-![Example of a generated task list](https://pbs.twimg.com/media/Go6GNuOWsAEcSDm?format=jpg&name=medium)
+- **`CLAUDE_UI_BEST_PRACTICE.MD`** - UI development best practices with Claude Code
+  - How to communicate UI changes effectively
+  - Using screenshots for visual context
+  - Component-level and layout change strategies
+  - Iterative development workflow
+  - Claude's UI capabilities and limitations
 
-### 4️⃣ Instruct the AI to Work Through Tasks (and Mark Completion)
+### Root Files
 
-To ensure methodical progress and allow for verification, we'll use `process-task-list.md`. This command instructs the AI to focus on one task at a time and wait for your go-ahead before moving to the next.
+- **`LICENSE`** - Apache License 2.0
+- **`VIBE_CONSULT_CODE.md`** - Consulting services information
+  - Rapid prototyping & MVP development
+  - Technical consulting and AI agent development
+  - Engagement models and focus areas
 
-1. Create or ensure you have the `process-task-list.md` file accessible.
-2. In your AI tool, tell the AI to start with the first task (e.g., `1.1`):
+## 🚀 Quick Start
 
-    ```text
-    Please start on task 1.1 and use @process-task-list.md
-    ```
-    *(Important: You only need to reference `@process-task-list.md` for the *first* task. The instructions within it guide the AI for subsequent tasks.)*
+### For Development Environment Setup:
 
-    The AI will attempt the task and then prompt you to review.
-
-    ![Example of starting on a task with process-task-list.md](https://pbs.twimg.com/media/Go6I41KWcAAAlHc?format=jpg&name=medium)
-
-### 5️⃣ Review, Approve, and Progress ✅
-
-As the AI completes each task, you review the changes.
-
-* If the changes are good, simply reply with "yes" (or a similar affirmative) to instruct the AI to mark the task complete and move to the next one.
-* If changes are needed, provide feedback to the AI to correct the current task before moving on.
-
-You'll see a satisfying list of completed items grow, providing a clear visual of your feature coming to life!
-
-![Example of a progressing task list with completed items](https://pbs.twimg.com/media/Go6KrXZWkAA_UuX?format=jpg&name=medium)
-
-While it's not always perfect, this method has proven to be a very reliable way to build out larger features with AI assistance.
-
-### Video Demonstration 🎥
-
-If you'd like to see this in action, I demonstrated it on [Claire Vo's "How I AI" podcast](https://www.youtube.com/watch?v=fD4ktSkNCw4).
-
-[![Demonstration of AI Dev Tasks on How I AI Podcast](https://img.youtube.com/vi/fD4ktSkNCw4/maxresdefault.jpg)](https://www.youtube.com/watch?v=fD4ktSkNCw4).
-
-## 🗂️ Files in this Repository
-
-* **`create-prd.md`**: Guides the AI in generating a Product Requirement Document for your feature.
-* **`generate-tasks.md`**: Takes a PRD markdown file as input and helps the AI break it down into a detailed, step-by-step implementation task list.
-* **`process-task-list.md`**: Instructs the AI on how to process the generated task list, tackling one task at a time and waiting for your approval before proceeding. (This file also contains logic for the AI to mark tasks as complete).
-
-## 🌟 Benefits
-
-* **Structured Development:** Enforces a clear process from idea to code.
-* **Step-by-Step Verification:** Allows you to review and approve AI-generated code at each small step, ensuring quality and control.
-* **Manages Complexity:** Breaks down large features into smaller, digestible tasks for the AI, reducing the chance of it getting lost or generating overly complex, incorrect code.
-* **Improved Reliability:** Offers a more dependable approach to leveraging AI for significant development work compared to single, large prompts.
-* **Clear Progress Tracking:** Provides a visual representation of completed tasks, making it easy to see how much has been done and what's next.
-
-## 🛠️ How to Use
-
-1. **Clone or Download:** Get these `.md` files into your project or a central location where your AI tool can access them.
+1. **Interactive Menu** (Recommended):
    ```bash
-   git clone https://github.com/snarktank/ai-dev-tasks.git
-   ```
-2. **Follow the Workflow:** Systematically use the `.md` files in your AI assistant as described in the workflow above.
-3. **Adapt and Iterate:**
-    * Feel free to modify the prompts within the `.md` files to better suit your specific needs or coding style.
-    * If the AI struggles with a task, try rephrasing your initial feature description or breaking down tasks even further.
-
-## Tool-Specific Instructions
-
-### Cursor
-
-Cursor users can follow the workflow described above, using the `.md` files directly in the Agent chat:
-
-1. Ensure you have the files from this repository accessible
-2. In Cursor's Agent chat, reference files with `@` (e.g., `@create-prd.md`)
-3. Follow the 5-step workflow as outlined above
-4. **MAX Mode for PRDs:** Using MAX mode in Cursor for PRD creation can yield more thorough results if your budget supports it
-
-### Claude Code
-
-To use these tools with Claude Code:
-
-1. **Copy files to your repo**: Copy the three `.md` files to a subdirectory in your project (e.g., `/ai-dev-tasks`)
-
-2. **Reference in CLAUDE.md**: Add these lines to your project's `./CLAUDE.md` file:
-   ```
-   # AI Dev Tasks
-   Use these files when I request structured feature development using PRDs:
-   /ai-dev-tasks/create-prd.md
-   /ai-dev-tasks/generate-tasks.md
-   /ai-dev-tasks/process-task-list.md
+   cd tools
+   chmod +x dev_tools_menu.sh
+   ./dev_tools_menu.sh
    ```
 
-3. **Create custom commands** (optional): For easier access, create these files in `.claude/commands/`:
-   - `.claude/commands/create-prd.md` with content:
-     ```
-     Please use the structured workflow in /ai-dev-tasks/create-prd.md to help me create a PRD for a new feature.
-     ```
-   - `.claude/commands/generate-tasks.md` with content:
-     ```
-     Please generate tasks from the PRD using /ai-dev-tasks/generate-tasks.md
-     If not explicitly told which PRD to use, generate a list of PRDs and ask the user to select one under `/tasks` or create a new one using `create-prd.md`:
-     - assume it's stored under `/tasks` and has a filename starting with `[n]-prd-` (e.g., `0001-prd-[name].md`)
-     - it should not already have a corresponding task list in `/tasks` (e.g., `tasks-0001-prd-[name].md`)
-     - **always** ask the user to confirm the PRD file name before proceeding
-     Make sure to provide options in number lists so I can respond easily (if multiple options).
-     ```
-   - `.claude/commands/process-task-list.md` with content:
-     ```
-     Please process the task list using /ai-dev-tasks/process-task-list.md
-     ```
+2. **Automated Setup**:
+   ```bash
+   cd tools
+   chmod +x master_tmux_setup.sh master_neovim_setup.sh
+   ./master_tmux_setup.sh
+   ./master_neovim_setup.sh
+   ```
 
-   Make sure to restart Claude Code after adding these files (`/exit`).
-   Then use commands like `/create-prd` to quickly start the workflow.
-   Note: This setup can also be adopted for a global level across all your projects, please refer to the Claude Code documentation [here](https://docs.anthropic.com/en/docs/claude-code/memory) and [here](https://docs.anthropic.com/en/docs/claude-code/common-workflows#create-personal-slash-commands).
+3. **Manual Installation**:
+   ```bash
+   # Follow the step-by-step guide
+   cat tools/manual_setup.md
+   ```
 
-### Other Tools
+### For AI Agent Workflow:
 
-For other AI-powered IDEs or CLIs:
+1. **Clone or reference this repository** in your project
+2. **Follow the 3-step process**:
+   - Step 1: Use `agents_guide/1-create-prd.md` to generate a PRD
+   - Step 2: Use `agents_guide/2-generate-tasks.md` to create task list
+   - Step 3: Use `agents_guide/3-process-task-list.md` to implement tasks
+3. **Read** `agents_guide/agents_guide.md` for detailed workflow documentation
 
-1. Copy the `.md` files to your project
-2. Reference them according to your tool's documentation
-3. Follow the same workflow principles
+## 💡 Use Cases
 
-## 💡 Tips for Success
+**This repository is for you if you want to:**
 
-* **Be Specific:** The more context and clear instructions you provide (both in your initial feature description and any clarifications), the better the AI's output will be.
-* **Use a Capable Model:** The free version of Cursor currently uses less capable AI models that often struggle to follow the structured instructions in this workflow. For best results, consider upgrading to the Pro plan to ensure consistent, accurate task execution.
-* **MAX Mode for PRDs:** As mentioned, using MAX mode in Cursor for PRD creation (`create-prd.mdc`) can yield more thorough and higher-quality results if your budget supports it.
-* **Correct File Tagging:** Always ensure you're accurately tagging the PRD filename (e.g., `@MyFeature-PRD.md`) when generating tasks.
-* **Patience and Iteration:** AI is a powerful tool, but it's not magic. Be prepared to guide, correct, and iterate. This workflow is designed to make that iteration process smoother.
+- ✅ Set up a complete Ubuntu/Debian development environment with modern tools
+- ✅ Configure Tmux and Neovim with optimal settings and themes
+- ✅ Use AI agents (Claude, Cursor, etc.) to build features systematically
+- ✅ Break down complex features into manageable, trackable tasks
+- ✅ Maintain code quality with PRD-driven development
+- ✅ Automate development tool installation and configuration
+
+## 🛠️ System Requirements
+
+- **Operating System:** Ubuntu or Debian Linux distributions
+- **Prerequisites:** `git`, `curl`, `sudo` access
+- **Recommended:** Fresh Ubuntu/Debian installation or clean user environment
+
+## 📚 Additional Resources
+
+- **Tmux Navigation:** See `tools/manual_setup.md` for complete keybinding reference
+- **Neovim Shortcuts:** Prefix = Space, Ctrl+n for file tree, Space+ff for file search
+- **AI Workflow Demo:** Watch the demonstration in the [How I AI podcast](https://www.youtube.com/watch?v=fD4ktSkNCw4)
 
 ## 🤝 Contributing
 
-Got ideas to improve these `.md` files or have new ones that fit this workflow? Contributions are welcome!
+Contributions are welcome! Feel free to:
+- Open issues for bugs or feature requests
+- Submit pull requests for improvements
+- Share your setup configurations and workflows
 
-Please feel free to:
+## 📄 License
 
-* Open an issue to discuss changes or suggest new features.
-* Submit a pull request with your enhancements.
+Apache License 2.0 - See [LICENSE](LICENSE) file for details
 
 ---
 
-Happy AI-assisted developing!
+**Made with ❤️ for developers who value automation, AI-assisted development, and clean workflows.**
