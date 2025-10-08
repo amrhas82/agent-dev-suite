@@ -23,19 +23,18 @@ sudo snap install ghostty --classic
 ```
 
 ### Tmux
+## Follow the rest [tmux full setup guide].(tmux-install-guide.md)
 ```bash
 # 1. Clone the Repository
 git clone https://github.com/tmux/tmux.git
 cd tmux
 
-# 2. Build and Install
+# 2. Build and Install 
 
 sh autogen.sh
 ./configure
 make
 sudo make install
-# 3. follow the rest [tmux full setup guide].(tmux-install-guide.md)
-
 ```
 
 ### Tmux Plugin Manager (TPM)
