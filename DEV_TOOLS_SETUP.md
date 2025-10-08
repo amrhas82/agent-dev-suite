@@ -23,7 +23,7 @@ sudo snap install ghostty --classic
 ```
 
 ### Tmux
-## Follow the rest [tmux full setup guide].(tmux-install-guide.md)
+** Follow the rest [tmux full setup guide].(tmux-install-guide.md)
 ```bash
 # 1. Clone the Repository
 git clone https://github.com/tmux/tmux.git
