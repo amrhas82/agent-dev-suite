@@ -17,6 +17,12 @@ npm install -g @anthropic-ai/claude-code
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
+### Pycharm Community
+```bash
+#Install Pycharm Community classic
+sudo snap install pycharm-professional --classic
+```
+
 ### Ghostty Terminal
 ```bash
 sudo snap install ghostty --classic
