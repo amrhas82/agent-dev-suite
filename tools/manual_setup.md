@@ -80,6 +80,9 @@ tar -zxf v2.40.0.tar.gz
 cd git-2.40.0
 make prefix=/usr/local all
 sudo make prefix=/usr/local install
+
+#or from download from snap
+sudo apt install git
 git --version
 ```
 
