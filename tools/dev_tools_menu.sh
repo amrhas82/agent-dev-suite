@@ -65,8 +65,8 @@ install_ghostty() {
 install_tmux() {
     print_info "Installing Tmux + TPM..."
     
-    if [ -f "$SCRIPT_DIR/tools/master_tmux_setup.sh" ]; then
-        bash "$SCRIPT_DIR/tools/master_tmux_setup.sh"
+    if [ -f "$SCRIPT_DIR/master_tmux_setup.sh" ]; then
+        bash "$SCRIPT_DIR/master_tmux_setup.sh"
         print_success "Tmux setup completed via master_tmux_setup.sh"
     else
         print_warning "master_tmux_setup.sh not found. Installing manually..."
@@ -103,8 +103,8 @@ install_tmux() {
 install_neovim() {
     print_info "Installing Neovim..."
     
-    if [ -f "$SCRIPT_DIR/tools/master_neovim_setup.sh" ]; then
-        bash "$SCRIPT_DIR/tools/master_neovim_setup.sh"
+    if [ -f "$SCRIPT_DIR/master_neovim_setup.sh" ]; then
+        bash "$SCRIPT_DIR/master_neovim_setup.sh"
         print_success "Neovim setup completed via master_neovim_setup.sh"
     else
         print_warning "master_neovim_setup.sh not found. Installing manually..."
@@ -253,8 +253,8 @@ show_menu() {
     echo ""
     echo -e "${GREEN}1)${NC} Install Claude Code"
     echo -e "${GREEN}2)${NC} Install Ghostty Terminal"
-    echo -e "${GREEN}3)${NC} Install Tmux + TPM"
-    echo -e "${GREEN}4)${NC} Install Neovim + Config"
+    echo -e "${GREEN}3)${NC} Install Tmux + TPM + Config (from source)"
+    echo -e "${GREEN}4)${NC} Install Neovim + NvimTree + Plugins (from source)"
     echo -e "${GREEN}5)${NC} Install AmpCode"
     echo -e "${GREEN}6)${NC} Install Lazygit"
     echo -e "${GREEN}7)${NC} Update Git to Latest"

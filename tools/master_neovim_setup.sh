@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Complete Development Environment Setup Script
-# Installs and configures: Neovim + nvim-tree + Lazygit + Tmux + TPM
+# Neovim + NvimTree Complete Setup Script
+# Installs and configures: Neovim (from source) + nvim-tree + Lazygit + plugins + config
 
 set -e
 
 echo "================================================"
-echo "  Complete Development Environment Setup"
+echo "  Neovim + NvimTree Setup"
 echo "================================================"
 echo ""
 echo "This script will install and configure:"
-echo "  • Neovim (latest) with nvim-tree file explorer"
+echo "  • Neovim (latest from source)"
+echo "  • nvim-tree file explorer"
 echo "  • Lazygit for Git management"
-echo "  • Tmux (from source) with plugin manager"
 echo "  • All necessary plugins and configurations"
 echo ""
 read -p "Continue with installation? (y/n) " -n 1 -r
@@ -23,19 +23,19 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 # Check if running as root
-if [ "$EUID" -eq 0 ]; then 
+if [ "$EUID" -eq 0 ]; then
     echo "Please do not run this script as root"
     echo "The script will ask for sudo password when needed"
     exit 1
 fi
 
 # ==========================================
-# PART 1: NEOVIM SETUP
+# NEOVIM SETUP
 # ==========================================
 
 echo ""
 echo "================================================"
-echo "PART 1: Setting up Neovim"
+echo "Setting up Neovim"
 echo "================================================"
 echo ""
 
@@ -280,195 +280,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) | execute 'cd' argv()[0] | execute 'NvimTreeOpen' | endif
-autocmd BufEnter * if winnr('
-
-echo ""
-echo "Installing Neovim plugins..."
-nvim +PlugInstall +qall
-
-echo "✓ Neovim setup complete"
-
-# ==========================================
-# PART 2: TMUX SETUP
-# ==========================================
-
-echo ""
-echo "================================================"
-echo "PART 2: Setting up Tmux"
-echo "================================================"
-echo ""
-
-echo "Installing Tmux build dependencies..."
-sudo apt install -y \
-    libevent-dev \
-    ncurses-dev \
-    bison \
-    pkg-config \
-    automake \
-    autoconf
-
-# Create temporary directory
-TEMP_DIR=$(mktemp -d)
-cd "$TEMP_DIR"
-
-echo ""
-echo "Cloning Tmux repository..."
-git clone https://github.com/tmux/tmux.git
-cd tmux
-
-echo ""
-echo "Building Tmux from source..."
-sh autogen.sh
-./configure
-make
-sudo make install
-
-echo ""
-echo "Cleaning up old tmux socket files..."
-tmux kill-server 2>/dev/null || true
-rm -rf /tmp/tmux-* 2>/dev/null || true
-
-cd ~
-rm -rf "$TEMP_DIR"
-
-echo ""
-echo "Installing Tmux Plugin Manager (TPM)..."
-TPM_DIR="$HOME/.tmux/plugins/tpm"
-if [ -d "$TPM_DIR" ]; then
-    cd "$TPM_DIR"
-    git pull
-else
-    git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
-fi
-
-cd ~
-
-echo ""
-echo "Creating Tmux configuration..."
-cat > ~/.tmux.conf << 'TMUX_EOF'
-set-option -sa terminal-overrides ",xterm*:Tc"
-set -g default-terminal "xterm-256color"
-set -g mouse on
-
-unbind C-b
-set-option -g prefix C-a
-bind-key C-a send-prefix
-
-bind r source-file ~/.tmux.conf\; display "Reloaded!"
-
-bind h select-pane -L
-bind j select-pane -D 
-bind k select-pane -U
-bind l select-pane -R
-
-set -g base-index 1
-set -g pane-base-index 1
-set-window-option -g pane-base-index 1
-set-option -g renumber-windows on
-
-bind -n M-Left select-pane -L
-bind -n M-Right select-pane -R
-bind -n M-Up select-pane -U
-bind -n M-Down select-pane -D
-
-bind -n S-Left  previous-window
-bind -n S-Right next-window
-
-bind -n M-H previous-window
-bind -n M-L next-window
-
-set -g @catppuccin_flavour 'mocha'
-set -g @catppuccin_flavor "mocha"
-set -g @catppuccin_window_status_style "rounded"
-
-set -g status-right-length 100
-set -g status-left-length 100
-set -g status-left ""
-set -g status-right "#{E:@catppuccin_status_application}"
-set -agF status-right "#{E:@catppuccin_status_cpu}"
-set -ag status-right "#{E:@catppuccin_status_session}"
-set -ag status-right "#{E:@catppuccin_status_uptime}"
-set -agF status-right "#{E:@catppuccin_status_battery}"
-
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'christoomey/vim-tmux-navigator'
-set -g @plugin 'dreamsofcode-io/catppuccin-tmux'
-set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @plugin 'tmux-plugins/tmux-copycat'
-
-set-window-option -g mode-keys vi
-
-bind-key -T copy-mode-vi v send-keys -X begin-selection
-bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-
-bind '"' split-window -v -c "#{pane_current_path}"
-bind % split-window -h -c "#{pane_current_path}"
-
-run '~/.tmux/plugins/tpm/tpm'
-TMUX_EOF
-
-echo ""
-echo "Installing Tmux plugins..."
-export TERM=xterm-256color
-tmux start-server
-tmux new-session -d -s setup
-sleep 2
-"$TPM_DIR/bin/install_plugins"
-tmux kill-session -t setup 2>/dev/null || true
-
-echo "✓ Tmux setup complete"
-
-# ==========================================
-# COMPLETION SUMMARY
-# ==========================================
-
-echo ""
-echo "================================================"
-echo "  ✓ Complete Setup Finished!"
-echo "================================================"
-echo ""
-echo "Installed Software:"
-echo "  • Neovim: $(nvim --version | head -n1)"
-echo "  • Lazygit: $(lazygit --version)"
-echo "  • Tmux: $(tmux -V)"
-echo "  • Node.js: $(node --version)"
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "NEOVIM KEYBINDINGS (Leader = Space)"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  Ctrl+n          - Toggle file tree"
-echo "  Space+ff        - Find files"
-echo "  Space+fg        - Search in files"
-echo "  Space+gg        - Open Lazygit"
-echo "  Space+w         - Save file"
-echo "  Space+q         - Quit"
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "TMUX KEYBINDINGS (Prefix = Ctrl+a)"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  Ctrl+a c        - New window"
-echo "  Ctrl+a %        - Split horizontal"
-echo "  Ctrl+a \"        - Split vertical"
-echo "  Ctrl+a h/j/k/l  - Navigate panes (vim style)"
-echo "  Shift+Left/Right- Switch windows"
-echo "  Ctrl+a d        - Detach session"
-echo "  Ctrl+a r        - Reload config"
-echo ""
-echo "Quick Start:"
-echo "  1. Start tmux: tmux"
-echo "  2. Open nvim in tmux: nvim"
-echo "  3. Toggle file tree: Ctrl+n"
-echo "  4. Open git: Space+gg"
-echo ""
-echo "Configuration Files:"
-echo "  • Neovim: ~/.config/nvim/init.vim"
-echo "  • Tmux: ~/.tmux.conf"
-echo ""
-echo "Enjoy your new development environment! 🚀"
-echo ""
-) == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+autocmd BufEnter * if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 NVIM_EOF
 
 echo ""
@@ -478,182 +290,57 @@ nvim +PlugInstall +qall
 echo "✓ Neovim setup complete"
 
 # ==========================================
-# PART 2: TMUX SETUP
-# ==========================================
-
-echo ""
-echo "================================================"
-echo "PART 2: Setting up Tmux"
-echo "================================================"
-echo ""
-
-echo "Installing Tmux build dependencies..."
-sudo apt install -y \
-    libevent-dev \
-    ncurses-dev \
-    bison \
-    pkg-config \
-    automake \
-    autoconf
-
-# Create temporary directory
-TEMP_DIR=$(mktemp -d)
-cd "$TEMP_DIR"
-
-echo ""
-echo "Cloning Tmux repository..."
-git clone https://github.com/tmux/tmux.git
-cd tmux
-
-echo ""
-echo "Building Tmux from source..."
-sh autogen.sh
-./configure
-make
-sudo make install
-
-echo ""
-echo "Cleaning up old tmux socket files..."
-tmux kill-server 2>/dev/null || true
-rm -rf /tmp/tmux-* 2>/dev/null || true
-
-cd ~
-rm -rf "$TEMP_DIR"
-
-echo ""
-echo "Installing Tmux Plugin Manager (TPM)..."
-TPM_DIR="$HOME/.tmux/plugins/tpm"
-if [ -d "$TPM_DIR" ]; then
-    cd "$TPM_DIR"
-    git pull
-else
-    git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
-fi
-
-cd ~
-
-echo ""
-echo "Creating Tmux configuration..."
-cat > ~/.tmux.conf << 'TMUX_EOF'
-set-option -sa terminal-overrides ",xterm*:Tc"
-set -g default-terminal "xterm-256color"
-set -g mouse on
-
-unbind C-b
-set-option -g prefix C-a
-bind-key C-a send-prefix
-
-bind r source-file ~/.tmux.conf\; display "Reloaded!"
-
-bind h select-pane -L
-bind j select-pane -D 
-bind k select-pane -U
-bind l select-pane -R
-
-set -g base-index 1
-set -g pane-base-index 1
-set-window-option -g pane-base-index 1
-set-option -g renumber-windows on
-
-bind -n M-Left select-pane -L
-bind -n M-Right select-pane -R
-bind -n M-Up select-pane -U
-bind -n M-Down select-pane -D
-
-bind -n S-Left  previous-window
-bind -n S-Right next-window
-
-bind -n M-H previous-window
-bind -n M-L next-window
-
-set -g @catppuccin_flavour 'mocha'
-set -g @catppuccin_flavor "mocha"
-set -g @catppuccin_window_status_style "rounded"
-
-set -g status-right-length 100
-set -g status-left-length 100
-set -g status-left ""
-set -g status-right "#{E:@catppuccin_status_application}"
-set -agF status-right "#{E:@catppuccin_status_cpu}"
-set -ag status-right "#{E:@catppuccin_status_session}"
-set -ag status-right "#{E:@catppuccin_status_uptime}"
-set -agF status-right "#{E:@catppuccin_status_battery}"
-
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'christoomey/vim-tmux-navigator'
-set -g @plugin 'dreamsofcode-io/catppuccin-tmux'
-set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @plugin 'tmux-plugins/tmux-copycat'
-
-set-window-option -g mode-keys vi
-
-bind-key -T copy-mode-vi v send-keys -X begin-selection
-bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-
-bind '"' split-window -v -c "#{pane_current_path}"
-bind % split-window -h -c "#{pane_current_path}"
-
-run '~/.tmux/plugins/tpm/tpm'
-TMUX_EOF
-
-echo ""
-echo "Installing Tmux plugins..."
-export TERM=xterm-256color
-tmux start-server
-tmux new-session -d -s setup
-sleep 2
-"$TPM_DIR/bin/install_plugins"
-tmux kill-session -t setup 2>/dev/null || true
-
-echo "✓ Tmux setup complete"
-
-# ==========================================
 # COMPLETION SUMMARY
 # ==========================================
 
 echo ""
 echo "================================================"
-echo "  ✓ Complete Setup Finished!"
+echo "  ✓ Neovim Setup Finished!"
 echo "================================================"
 echo ""
 echo "Installed Software:"
 echo "  • Neovim: $(nvim --version | head -n1)"
 echo "  • Lazygit: $(lazygit --version)"
-echo "  • Tmux: $(tmux -V)"
 echo "  • Node.js: $(node --version)"
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "NEOVIM KEYBINDINGS (Leader = Space)"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "  Ctrl+n          - Toggle file tree"
-echo "  Space+ff        - Find files"
-echo "  Space+fg        - Search in files"
+echo "  Space+e         - Focus file tree"
+echo "  Space+f         - Find file in tree"
+echo "  Space+ff        - Find files (Telescope)"
+echo "  Space+fg        - Search in files (Live grep)"
+echo "  Space+fb        - Browse buffers"
+echo "  Space+fr        - Recent files"
 echo "  Space+gg        - Open Lazygit"
 echo "  Space+w         - Save file"
 echo "  Space+q         - Quit"
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "TMUX KEYBINDINGS (Prefix = Ctrl+a)"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  Ctrl+a c        - New window"
-echo "  Ctrl+a %        - Split horizontal"
-echo "  Ctrl+a \"        - Split vertical"
-echo "  Ctrl+a h/j/k/l  - Navigate panes (vim style)"
-echo "  Shift+Left/Right- Switch windows"
-echo "  Ctrl+a d        - Detach session"
-echo "  Ctrl+a r        - Reload config"
+echo "  Space+x         - Save and quit"
+echo "  Tab/Shift+Tab   - Next/Previous buffer"
+echo "  Ctrl+h/j/k/l    - Navigate splits"
 echo ""
 echo "Quick Start:"
-echo "  1. Start tmux: tmux"
-echo "  2. Open nvim in tmux: nvim"
-echo "  3. Toggle file tree: Ctrl+n"
+echo "  1. Open nvim: nvim"
+echo "  2. Toggle file tree: Ctrl+n"
+echo "  3. Find files: Space+ff"
 echo "  4. Open git: Space+gg"
 echo ""
-echo "Configuration Files:"
+echo "Configuration File:"
 echo "  • Neovim: ~/.config/nvim/init.vim"
-echo "  • Tmux: ~/.tmux.conf"
 echo ""
-echo "Enjoy your new development environment! 🚀"
+echo "Installed Plugins:"
+echo "  • nvim-tree (file explorer)"
+echo "  • nvim-web-devicons (file icons)"
+echo "  • tokyonight (color theme)"
+echo "  • lualine (status line)"
+echo "  • Telescope (fuzzy finder)"
+echo "  • Treesitter (syntax highlighting)"
+echo "  • Gitsigns (Git integration)"
+echo "  • Lazygit (Git UI)"
+echo "  • nvim-autopairs (auto-closing brackets)"
+echo "  • Comment.nvim (commenting)"
+echo "  • indent-blankline (indentation guides)"
+echo ""
+echo "Enjoy your new Neovim setup! 🚀"
 echo ""

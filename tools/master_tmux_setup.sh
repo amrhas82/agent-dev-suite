@@ -1,19 +1,19 @@
 #!/bin/bash
 
-# Complete Development Environment Setup Script
-# Installs and configures: Neovim + nvim-tree + Lazygit + Tmux + TPM
+# Tmux + TPM Complete Setup Script
+# Installs and configures: Tmux (from source) + TPM + plugins + config
 
 set -e
 
 echo "================================================"
-echo "  Complete Development Environment Setup"
+echo "  Tmux + TPM Setup"
 echo "================================================"
 echo ""
 echo "This script will install and configure:"
-echo "  • Neovim (latest) with nvim-tree file explorer"
-echo "  • Lazygit for Git management"
-echo "  • Tmux (from source) with plugin manager"
-echo "  • All necessary plugins and configurations"
+echo "  • Tmux (latest from source)"
+echo "  • TPM (Tmux Plugin Manager)"
+echo "  • Catppuccin theme with plugins"
+echo "  • Complete tmux configuration"
 echo ""
 read -p "Continue with installation? (y/n) " -n 1 -r
 echo
@@ -23,214 +23,33 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 # Check if running as root
-if [ "$EUID" -eq 0 ]; then 
+if [ "$EUID" -eq 0 ]; then
     echo "Please do not run this script as root"
     echo "The script will ask for sudo password when needed"
     exit 1
 fi
 
 # ==========================================
-# PART 1: NEOVIM SETUP
+# TMUX SETUP
 # ==========================================
 
 echo ""
 echo "================================================"
-echo "PART 1: Setting up Neovim"
-echo "================================================"
-echo ""
-
-echo "Installing prerequisites..."
-sudo apt update
-sudo apt install -y \
-    curl \
-    git \
-    build-essential \
-    unzip \
-    gettext \
-    cmake \
-    ripgrep \
-    fd-find \
-    software-properties-common
-
-echo ""
-echo "Installing Node.js..."
-if ! command -v node &> /dev/null; then
-    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-    sudo apt install -y nodejs
-fi
-
-echo ""
-echo "Installing Neovim..."
-sudo add-apt-repository -y ppa:neovim-ppa/unstable
-sudo apt update
-sudo apt install -y neovim
-
-echo ""
-echo "Installing Lazygit..."
-if ! command -v lazygit &> /dev/null; then
-    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-    tar xf lazygit.tar.gz lazygit
-    sudo install lazygit /usr/local/bin
-    rm lazygit lazygit.tar.gz
-fi
-
-echo ""
-echo "Installing vim-plug..."
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-mkdir -p ~/.config/nvim
-
-echo ""
-echo "Creating Neovim configuration..."
-cat > ~/.config/nvim/init.vim << 'NVIM_EOF'
-set number
-set relativenumber
-set mouse=a
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set smartindent
-set termguicolors
-set clipboard=unnamedplus
-set hidden
-set updatetime=300
-set timeoutlen=500
-set splitright
-set splitbelow
-set cursorline
-set signcolumn=yes
-
-call plug#begin('~/.local/share/nvim/plugged')
-Plug 'nvim-tree/nvim-tree.lua'
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'folke/tokyonight.nvim'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'kdheepak/lazygit.nvim'
-Plug 'windwp/nvim-autopairs'
-Plug 'numToStr/Comment.nvim'
-call plug#end()
-
-colorscheme tokyonight-night
-
-lua << END
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  view = {
-    width = 35,
-    side = "left",
-  },
-  renderer = {
-    group_empty = true,
-    icons = {
-      show = {
-        file = true,
-        folder = true,
-        folder_arrow = true,
-        git = true,
-      },
-    },
-  },
-  filters = {
-    dotfiles = false,
-  },
-  actions = {
-    open_file = {
-      quit_on_open = false,
-    },
-  },
-  git = {
-    enable = true,
-    ignore = false,
-  },
-})
-
-require('lualine').setup {
-  options = {
-    theme = 'tokyonight',
-    component_separators = '|',
-    section_separators = '',
-  },
-}
-
-require('nvim-treesitter.configs').setup {
-  ensure_installed = { "lua", "vim", "python", "javascript", "html", "css", "bash" },
-  highlight = {
-    enable = true,
-  },
-}
-
-require('gitsigns').setup()
-require('nvim-autopairs').setup()
-require('Comment').setup()
-END
-
-let mapleader = " "
-
-nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>e :NvimTreeFocus<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>gg :LazyGit<CR>
-nnoremap <leader>gc :LazyGitConfig<CR>
-nnoremap <leader>gf :LazyGitFilter<CR>
-nnoremap <leader>bn :bnext<CR>
-nnoremap <leader>bp :bprevious<CR>
-nnoremap <leader>bd :bdelete<CR>
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <Esc> :noh<CR>
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>x :x<CR>
-nnoremap <leader>sv :vsplit<CR>
-nnoremap <leader>sh :split<CR>
-
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) | execute 'cd' argv()[0] | execute 'NvimTreeOpen' | endif
-autocmd BufEnter * if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
-NVIM_EOF
-
-echo ""
-echo "Installing Neovim plugins..."
-nvim +PlugInstall +qall
-
-echo "✓ Neovim setup complete"
-
-# ==========================================
-# PART 2: TMUX SETUP
-# ==========================================
-
-echo ""
-echo "================================================"
-echo "PART 2: Setting up Tmux"
+echo "Setting up Tmux"
 echo "================================================"
 echo ""
 
 echo "Installing Tmux build dependencies..."
+sudo apt update
 sudo apt install -y \
     libevent-dev \
     ncurses-dev \
     bison \
     pkg-config \
     automake \
-    autoconf
+    autoconf \
+    build-essential \
+    git
 
 # Create temporary directory
 TEMP_DIR=$(mktemp -d)
@@ -282,7 +101,7 @@ bind-key C-a send-prefix
 bind r source-file ~/.tmux.conf\; display "Reloaded!"
 
 bind h select-pane -L
-bind j select-pane -D 
+bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
@@ -351,24 +170,11 @@ echo "✓ Tmux setup complete"
 
 echo ""
 echo "================================================"
-echo "  ✓ Complete Setup Finished!"
+echo "  ✓ Tmux Setup Finished!"
 echo "================================================"
 echo ""
 echo "Installed Software:"
-echo "  • Neovim: $(nvim --version | head -n1)"
-echo "  • Lazygit: $(lazygit --version)"
 echo "  • Tmux: $(tmux -V)"
-echo "  • Node.js: $(node --version)"
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "NEOVIM KEYBINDINGS (Leader = Space)"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  Ctrl+n          - Toggle file tree"
-echo "  Space+ff        - Find files"
-echo "  Space+fg        - Search in files"
-echo "  Space+gg        - Open Lazygit"
-echo "  Space+w         - Save file"
-echo "  Space+q         - Quit"
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "TMUX KEYBINDINGS (Prefix = Ctrl+a)"
@@ -383,13 +189,18 @@ echo "  Ctrl+a r        - Reload config"
 echo ""
 echo "Quick Start:"
 echo "  1. Start tmux: tmux"
-echo "  2. Open nvim in tmux: nvim"
-echo "  3. Toggle file tree: Ctrl+n"
-echo "  4. Open git: Space+gg"
+echo "  2. Use prefix (Ctrl+a) + commands above"
 echo ""
-echo "Configuration Files:"
-echo "  • Neovim: ~/.config/nvim/init.vim"
+echo "Configuration File:"
 echo "  • Tmux: ~/.tmux.conf"
 echo ""
-echo "Enjoy your new development environment! 🚀"
+echo "Installed Plugins:"
+echo "  • TPM (Plugin Manager)"
+echo "  • tmux-sensible (sensible defaults)"
+echo "  • vim-tmux-navigator (seamless vim/tmux navigation)"
+echo "  • catppuccin-tmux (Mocha theme)"
+echo "  • tmux-yank (clipboard integration)"
+echo "  • tmux-copycat (search enhancement)"
+echo ""
+echo "Enjoy your new tmux setup! 🚀"
 echo ""
