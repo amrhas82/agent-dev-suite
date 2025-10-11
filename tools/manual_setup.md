@@ -24,15 +24,9 @@ curl https://cursor.com/install -fsS | bash
 
 ### Lite XL Markdown editor
 ```bash
-# Install dependencies
+# Build from script
 sudo apt update
 sudo apt install build-essential libsdl2-dev libfreetype6-dev
-
-# Clone and build
-git clone https://github.com/lite-xl/lite-xl.git
-cd lite-xl
-make
-sudo make install
 ```
 
 ### Pycharm Community
