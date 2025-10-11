@@ -16,6 +16,11 @@ npm install -g @anthropic-ai/claude-code
 #Install stable version (default)
 curl -fsSL https://claude.ai/install.sh | bash
 ```
+### Cursor
+```bash
+#Install Cursor agent
+curl https://cursor.com/install -fsS | bash
+```
 
 ### Pycharm Community
 ```bash
