@@ -22,6 +22,14 @@ curl -fsSL https://claude.ai/install.sh | bash
 curl https://cursor.com/install -fsS | bash
 ```
 
+### Zettlr
+```bash
+curl -s --compressed "https://apt.zettlr.com/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/zettlr_apt.gpg > /dev/null
+sudo curl -s --compressed -o /etc/apt/sources.list.d/zettlr.list "https://apt.zettlr.com/zettlr.list"
+sudo apt update
+sudo apt install zettlr
+```
+
 ### Pycharm Community
 ```bash
 #Install Pycharm Community classic
