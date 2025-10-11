@@ -22,12 +22,17 @@ curl -fsSL https://claude.ai/install.sh | bash
 curl https://cursor.com/install -fsS | bash
 ```
 
-### Zettlr
+### Lite XL Markdown editor
 ```bash
-curl -s --compressed "https://apt.zettlr.com/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/zettlr_apt.gpg > /dev/null
-sudo curl -s --compressed -o /etc/apt/sources.list.d/zettlr.list "https://apt.zettlr.com/zettlr.list"
+# Install dependencies
 sudo apt update
-sudo apt install zettlr
+sudo apt install build-essential libsdl2-dev libfreetype6-dev
+
+# Clone and build
+git clone https://github.com/lite-xl/lite-xl.git
+cd lite-xl
+make
+sudo make install
 ```
 
 ### Pycharm Community
