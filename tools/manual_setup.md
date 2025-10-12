@@ -96,6 +96,8 @@ curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/downl
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit -D -t /usr/local/bin/
 lazygit --version
+# install gh auth
+sudo apt install gh
 ```
 
 ### Update Git to Latest Version
