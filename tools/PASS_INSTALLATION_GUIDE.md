@@ -142,7 +142,7 @@ pass git push -u origin main
 ### Push to Remote Repository
 ```bash
 # Add remote repository
-pass git remote add origin git@github.com:amrhas82/pwd.git
+pass git remote set-url origin https://github.com/amrhas82/store.git
 
 # Push to remote
 pass git push origin master
