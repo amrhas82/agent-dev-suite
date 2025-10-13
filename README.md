@@ -63,6 +63,14 @@ This directory contains scripts and configuration files to set up your complete 
   - Integration with other tools
   - Security best practices
 
+- **`git_guide.md`** - The Ultimate Git Guide
+  - Comprehensive Git command reference
+  - Repository management and branching strategies
+  - Advanced operations (stashing, tagging, rebasing)
+  - Testing integration and CI/CD workflows
+  - Troubleshooting and best practices
+  - Quick reference for common Git operations
+
 **Configuration Files:**
 
 - **`tmux.conf`** - Production-ready Tmux configuration file
@@ -322,6 +330,7 @@ This directory contains the original AI Dev Tasks workflow - a structured 3-step
 - **Lite XL:** Markdown preview with Ctrl+Shift+M, see `tools/master_litexl_setup.sh`
 - **Sublime Text:** Launch with `subl`, see `tools/manual_setup.md` for installation
 - **Pass CLI:** Complete setup guide in `tools/PASS_INSTALLATION_GUIDE.md`
+- **Git Operations:** Ultimate Git reference guide in `tools/git_guide.md`
 
 ### Window Managers & Productivity
 - **BSPWM Setup:** Complete guide in `debian_tools_scripts/bspwm_setup.md`
