@@ -106,6 +106,13 @@ pass show -c for/provider
 pass rm for/provider
 ```
 
+### locate *.gpg private and public keys
+```bash
+# Remove a password entry
+cd ~/.gnupg
+ls
+```
+
 ## Git Operations
 
 ### Check Git
@@ -117,7 +124,6 @@ pass git log
 pass git branch -a
 ```
 
-
 ### Revert Changes
 ```bash
 # Revert last git change
@@ -126,7 +132,16 @@ pass git revert HEAD
 
 ### Create initial commit
 ```bash
+#locate pass directory
 cd ~/.password-store
+
+#initialize repo
+pass git init
+
+# add all files or specific files
+pass git add .
+pass git remote set-rul origin https://github.com/amrhas82/pwd.git
+
 pass git add .
 pass git commit -m "Initial password store commit"
 pass git push -u origin master
