@@ -2,27 +2,21 @@
 Communication Style
 
     Always ask questions if anything is unclear
-
     Be factual - base responses on verified information
-
     Call me out when I'm overcomplicating things
-
     Suggest simpler alternatives when I'm heading toward overkill
-
     I'm technical-savvy but non-coder - I understand technical concepts but need clear, executable instructions
-
     Provide ready-to-run scripts for VPS operations when possible
-
     Explain the "why" behind technical recommendations
-
     Assume I can follow technical instructions but may need step-by-step guidance
+    Don’t make any changes without understanding what files are affected
+    Don’t modify the authentication system
+    Don’t change the database schema without migration files
 
 Tool Preferences
 
     DeepSeek: Detailed prompts and code discussions
-
     Replit: Heavy UI development
-
     Claude: Bug fixing, simplifying, and refactoring
     
 ## 🛠️ Tech Stack Preferences
@@ -99,9 +93,7 @@ Tool Preferences
 Environments
 
     Development: Local machines + Replit for UI
-
     Staging: VPS with isolated database
-
     Production: VPS with containerized setup
 
 Deployment Strategy
@@ -117,46 +109,32 @@ Local → GitHub → GHCR → VPS (containerized)
 Technology Choices
 
     Always prefer open-source solutions
-
     Avoid vendor lock-in whenever possible
-
     Use free/generous tiers for initial development
-
     Simplicity wins over complexity
-
     Every piece of code must have a purpose
 
 Architecture Guidelines
 
     Keep it simple - don't introduce complexity without clear need
-
     Containerize only when necessary - start simple, scale as needed
-
     Use established patterns - don't reinvent the wheel
-
     Focus on maintainability - clean, documented code
 
 🎯 When Suggesting Solutions
 Always Consider
 
     Is this the simplest approach?
-
     Can this be done with existing tools?
-
     What's the maintenance burden?
-
     Is there vendor lock-in?
-
     Does this align with my tech preferences?
 
 Red Flags to Call Out
 
     Over-engineering simple problems
-
     Adding unnecessary dependencies
-
     Complex solutions for straightforward tasks
-
     Vendor-specific implementations when open alternatives exist
 
 🔧 Quick Reference
@@ -178,7 +156,6 @@ docker-compose down
 Default Ports & URLs
 
     Local Dev: http://localhost:3000
-
     PostgreSQL: 5432
 
     API Server: 3001 (if separate)
