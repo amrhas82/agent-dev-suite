@@ -219,6 +219,93 @@ install_pycharm() {
     fi
 }
 
+# Function to install Lite XL
+install_litexl() {
+    print_info "Installing Lite XL..."
+    
+    if [ -f "$SCRIPT_DIR/master_litexl_setup.sh" ]; then
+        bash "$SCRIPT_DIR/master_litexl_setup.sh"
+        print_success "Lite XL setup completed via master_litexl_setup.sh"
+    else
+        print_warning "master_litexl_setup.sh not found. Installing manually..."
+        
+        if command_exists lite-xl; then
+            print_warning "Lite XL is already installed"
+            lite-xl --version
+        else
+            # Install dependencies
+            sudo apt-get update
+            sudo apt-get install -y build-essential git ninja-build libsdl2-dev \
+                libfreetype6-dev python3-pip cmake
+            
+            # Install meson
+            pip3 install --user --upgrade meson
+            export PATH="$HOME/.local/bin:$PATH"
+            
+            # Build and install SDL3
+            cd ~
+            if [ -d "SDL" ]; then
+                rm -rf SDL
+            fi
+            git clone https://github.com/libsdl-org/SDL.git
+            cd SDL
+            git checkout release-3.2.0
+            mkdir -p build
+            cd build
+            cmake .. -DCMAKE_BUILD_TYPE=Release
+            make -j$(nproc)
+            sudo make install
+            sudo ldconfig
+            
+            # Clone and build Lite XL
+            cd ~
+            if [ -d "lite-xl" ]; then
+                rm -rf lite-xl
+            fi
+            git clone https://github.com/lite-xl/lite-xl.git
+            cd lite-xl
+            ~/.local/bin/meson setup build --buildtype=release
+            ~/.local/bin/meson compile -C build
+            sudo cp build/src/lite-xl /usr/local/bin/
+            sudo mkdir -p /usr/local/share/lite-xl
+            sudo cp -r data/* /usr/local/share/lite-xl/
+            sudo chmod +x /usr/local/bin/lite-xl
+            
+            print_success "Lite XL installed successfully"
+        fi
+    fi
+}
+
+# Function to install Pass CLI password manager
+install_pass() {
+    print_info "Installing Pass CLI password manager..."
+    
+    if command_exists pass; then
+        print_warning "Pass is already installed"
+        pass version
+    else
+        sudo apt-get update
+        sudo apt-get install -y pass
+        print_success "Pass CLI password manager installed successfully"
+        print_info "To initialize pass, run: pass init <gpg-key-id>"
+        print_info "For more setup instructions, see: manual_setup.md"
+    fi
+}
+
+# Function to install Cursor AI CLI
+install_cursor() {
+    print_info "Installing Cursor AI CLI..."
+    
+    if command_exists cursor; then
+        print_warning "Cursor AI CLI is already installed"
+        cursor --version
+    else
+        curl https://cursor.com/install -fsS | bash
+        print_success "Cursor AI CLI installed successfully"
+        print_info "For more setup instructions, see: manual_setup.md"
+    fi
+}
+
 # Function to install all tools
 install_all() {
     print_info "Installing all development tools..."
@@ -240,6 +327,12 @@ install_all() {
     echo ""
     install_pycharm
     echo ""
+    install_litexl
+    echo ""
+    install_pass
+    echo ""
+    install_cursor
+    echo ""
     
     print_success "All tools installed successfully!"
 }
@@ -259,8 +352,11 @@ show_menu() {
     echo -e "${GREEN}6)${NC} Install Lazygit"
     echo -e "${GREEN}7)${NC} Update Git to Latest"
     echo -e "${GREEN}8)${NC} Install PyCharm Community"
+    echo -e "${GREEN}9)${NC} Install Lite XL (Markdown Editor)"
+    echo -e "${GREEN}10)${NC} Install Pass CLI (Password Manager)"
+    echo -e "${GREEN}11)${NC} Install Cursor AI CLI"
     echo ""
-    echo -e "${YELLOW}9)${NC} Install All Tools"
+    echo -e "${YELLOW}12)${NC} Install All Tools"
     echo ""
     echo -e "${RED}0)${NC} Exit"
     echo ""
@@ -300,6 +396,15 @@ main() {
                 install_pycharm
                 ;;
             9)
+                install_litexl
+                ;;
+            10)
+                install_pass
+                ;;
+            11)
+                install_cursor
+                ;;
+            12)
                 install_all
                 ;;
             0)

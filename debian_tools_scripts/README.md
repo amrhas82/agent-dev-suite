@@ -39,7 +39,7 @@ This directory contains comprehensive setup guides for various tools and window 
 ### Development Tools
 - **[nvim_setup.md](nvim_setup.md)** - Minimal, fast, and intuitive Neovim configuration designed for Markdown writing, scripting, and everyday editing. Features fast startup, clean visuals, and distraction-free editing without unnecessary bloat.
 
-###
+### Productivity Tools
 - **[butterbase_setup.md](butterbase_setup.md)** - A smooth, modular Bash configuration framework that makes your shell experience butter-smooth. Includes FZF integration, git-aware prompts, extensive aliases, and system functions.
 - **[butternotes_setup.md](butternotes_setup.md)** - A streamlined note-taking and todo management tool with smart fzf-enhanced project management. Follows the "inbox first, organize later" philosophy for maximum productivity.
 - **[butterscripts_setup.md](butterscripts_setup.md)** - A modular collection of utility scripts for Debian setups. Automates installs, configures tools, applies theming, and tweaks the system with minimal and practical scripts.

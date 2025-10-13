@@ -22,9 +22,9 @@ curl -fsSL https://claude.ai/install.sh | bash
 curl https://cursor.com/install -fsS | bash
 ```
 
-### Pass password manager
+### Pass password manager  [Pass Installation Guide](PASS_INSTALLATION_GUIDE.md)
 ```bash
-#Install pass and follow instructions on Pass Installation Guide
+#Install pass and follow instructions on
 sudo apt install pass
 ```
 
@@ -59,8 +59,7 @@ sudo snap install pycharm-professional --classic
 sudo snap install ghostty --classic
 ```
 
-### Tmux
-**[tmux full setup guide ](tmux-install-guide.md)** 
+### Tmux [Full setup guide ](tmux-install-guide.md)
 
 ```bash
 # 1. Clone the Repository
