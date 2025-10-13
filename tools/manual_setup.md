@@ -16,6 +16,37 @@ npm install -g @anthropic-ai/claude-code
 #Install stable version (default)
 curl -fsSL https://claude.ai/install.sh | bash
 ```
+### Cursor
+```bash
+#Install Cursor agent
+curl https://cursor.com/install -fsS | bash
+```
+
+### Pass password manager
+```bash
+#Install pass and follow instructions on Pass Installation Guide
+sudo apt install pass
+```
+
+### Sublime text editor
+```bash
+# Install GPG key
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
+
+# Add repository
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+
+# Update and install
+sudo apt update
+sudo apt install sublime-text
+```
+
+### Lite XL Markdown editor
+```bash
+# Build from script
+sudo apt update
+sudo apt install build-essential libsdl2-dev libfreetype6-dev
+```
 
 ### Pycharm Community
 ```bash
@@ -71,6 +102,8 @@ curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/downl
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit -D -t /usr/local/bin/
 lazygit --version
+# install gh auth
+sudo apt install gh
 ```
 
 ### Update Git to Latest Version
