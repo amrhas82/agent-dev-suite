@@ -1,34 +1,52 @@
 # Ubuntu Development Tools Setup Guide
 
 ## Table of Contents
-- [Terminal Tools](#terminal-tools)
-- [Development Tools](#development-tools)
-- [Git Tools](#git-tools)
-- [Tmux Configuration](#tmux-configuration)
-- [Neovim with Tmux Navigator](#neovim-with-tmux-navigator)
+- [Terminal Emulators](#terminal-emulators)
+- [Text Editors & IDEs](#text-editors--ides)
+- [AI-Powered Development Tools](#ai-powered-development-tools)
+- [Version Control Tools](#version-control-tools)
+- [Password Management](#password-management)
+- [Terminal Multiplexer (Tmux)](#terminal-multiplexer-tmux)
+- [Configuration & Integration](#configuration--integration)
+- [Installation Checklist](#installation-checklist)
 
-## Terminal Tools
+---
 
-### Claude code
+## Terminal Emulators
+
+### Ghostty Terminal
+Modern, GPU-accelerated terminal emulator with excellent performance.
+
 ```bash
-npm install -g @anthropic-ai/claude-code
-
-#Install stable version (default)
-curl -fsSL https://claude.ai/install.sh | bash
-```
-### Cursor
-```bash
-#Install Cursor agent
-curl https://cursor.com/install -fsS | bash
-```
-
-### Pass password manager  [Pass Installation Guide](PASS_INSTALLATION_GUIDE.md)
-```bash
-#Install pass and follow instructions on
-sudo apt install pass
+sudo snap install ghostty --classic
 ```
 
-### Sublime text editor
+**Features:**
+- GPU acceleration for smooth rendering
+- Built-in multiplexing capabilities
+- Customizable themes and fonts
+- Cross-platform support
+
+---
+
+## Text Editors & IDEs
+
+### Neovim
+Modern Vim-based text editor with Lua configuration and LSP support.
+
+```bash
+sudo snap install nvim --classic
+```
+
+**Features:**
+- Built-in LSP support
+- Lua-based configuration
+- Tree-sitter syntax highlighting
+- Telescope fuzzy finder
+
+### Sublime Text
+Lightweight, fast text editor with extensive plugin ecosystem.
+
 ```bash
 # Install GPG key
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
@@ -41,139 +59,239 @@ sudo apt update
 sudo apt install sublime-text
 ```
 
-### Lite XL Markdown editor
+**Features:**
+- Lightning-fast performance
+- Multiple cursors and selections
+- Extensive plugin ecosystem
+- Cross-platform support
+
+### Lite XL
+Lightweight, extensible text editor with Lua scripting.
+
 ```bash
-# Build from script
+# Install dependencies
 sudo apt update
 sudo apt install build-essential libsdl2-dev libfreetype6-dev
+
+# Build from source (see master_litexl_setup.sh for complete setup)
 ```
 
-### Pycharm Community
-```bash
-#Install Pycharm Community classic
-sudo snap install pycharm-professional --classic
-```
+**Features:**
+- Lightweight and fast
+- Lua-based plugin system
+- Markdown preview support
+- Cross-platform compatibility
 
-### Ghostty Terminal
-```bash
-sudo snap install ghostty --classic
-```
-
-### Tmux [Full setup guide ](tmux-install-guide.md)
+### PyCharm Community
+Full-featured Python IDE with debugging and testing tools.
 
 ```bash
-# 1. Clone the Repository
-git clone https://github.com/tmux/tmux.git
-cd tmux
-
-# 2. Build and Install 
-
-sh autogen.sh
-./configure
-make
-sudo make install
+sudo snap install pycharm-community --classic
 ```
 
-### Tmux Plugin Manager (TPM)
+**Features:**
+- Intelligent code completion
+- Built-in debugger and profiler
+- Version control integration
+- Database tools
+
+---
+
+## AI-Powered Development Tools
+
+### Claude Code
+AI-powered code assistant and editor.
+
 ```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# Install via npm (alternative)
+npm install -g @anthropic-ai/claude-code
+
+# Install stable version (recommended)
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-## Development Tools
+**Features:**
+- AI-powered code suggestions
+- Natural language code generation
+- Context-aware assistance
+- Multiple language support
 
-### Neovim
+### Cursor AI CLI
+AI-powered code editor with advanced features.
+
 ```bash
-sudo snap install nvim --classic
+curl https://cursor.com/install -fsS | bash
 ```
+
+**Features:**
+- AI code completion and generation
+- Chat-based development assistance
+- Multi-file context understanding
+- Integrated terminal and debugging
 
 ### AmpCode
+AI-powered development environment with JetBrains integration.
+
 ```bash
 curl -fsSL https://ampcode.com/install.sh | bash
 amp --jetbrains
 ```
 
-## Git Tools
+**Features:**
+- JetBrains IDE integration
+- AI-powered code suggestions
+- Project management tools
+- Team collaboration features
 
-### Lazygit
-```bash
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": *"v\K[^"]*')
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazygit.tar.gz lazygit
-sudo install lazygit -D -t /usr/local/bin/
-lazygit --version
-# install gh auth
-sudo apt install gh
-```
+---
 
-### Update Git to Latest Version
+## Version Control Tools
+
+### Git (Latest Version)
+Distributed version control system.
+
 ```bash
+# Method 1: Build from source (latest version)
 wget https://github.com/git/git/archive/refs/tags/v2.40.0.tar.gz
 tar -zxf v2.40.0.tar.gz
 cd git-2.40.0
 make prefix=/usr/local all
 sudo make prefix=/usr/local install
 
-#or from download from snap
+# Method 2: Install from package manager
 sudo apt install git
 git --version
 ```
 
+### Lazygit
+Simple terminal UI for Git commands.
 
-### Setup Steps for Tmux
+```bash
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": *"v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit -D -t /usr/local/bin/
+lazygit --version
+```
+
+**Features:**
+- Intuitive Git workflow
+- Visual diff and merge tools
+- Branch management
+- Commit history browsing
+
+### GitHub CLI
+Command-line interface for GitHub.
+
+```bash
+sudo apt install gh
+```
+
+**Features:**
+- Pull request and issue management
+- Repository creation and cloning
+- Authentication and authorization
+- GitHub Actions integration
+
+---
+
+## Password Management
+
+### Pass CLI
+Unix password manager using GPG encryption.
+
+```bash
+sudo apt install pass
+```
+
+**Setup Instructions:**
+1. Generate a GPG key: `gpg --gen-key`
+2. Initialize pass: `pass init <your-gpg-key-id>`
+3. Add passwords: `pass insert <path>`
+
+**Features:**
+- GPG-encrypted password storage
+- Command-line interface
+- Git integration for syncing
+- Browser integration available
+
+**For detailed setup:** See [Pass Installation Guide](PASS_INSTALLATION_GUIDE.md)
+
+---
+
+## Terminal Multiplexer (Tmux)
+
+### Tmux Installation
+Terminal multiplexer for managing multiple terminal sessions.
+
+```bash
+# Clone and build from source
+git clone https://github.com/tmux/tmux.git
+cd tmux
+sh autogen.sh
+./configure
+make
+sudo make install
+```
+
+**For complete setup:** See [Tmux Installation Guide](tmux-install-guide.md)
+
+### Tmux Plugin Manager (TPM)
+Plugin manager for extending Tmux functionality.
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+---
+
+## Configuration & Integration
+
+### Tmux Configuration Setup
 
 1. **Install Tmux Plugin Manager:**
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-#check if you have git installed 
+# Verify installation
 ls ~/.tmux/plugins/tpm
-
-#go to git location
 cd ~/.tmux/plugins/tpm
-
-#check git status
 git status
 ```
 
-2. **Create the tmux configuration:**
+2. **Create Tmux Configuration:**
 ```bash
-# search for it
+# Check for existing config
 ls -a ~ | grep .tmux.conf
 
-# or wider search
-find / -name "tmux.conf" 2>/dev/null
-
-# Create the file
+# Create configuration file
 nano ~/.tmux.conf
-
-# Or if using the default config directory
+# OR
 mkdir -p ~/.config/tmux
 nano ~/.config/tmux/tmux.conf
 ```
 
-3. **Reload tmux configuration:**
+3. **Reload Configuration:**
 ```bash
-# If using ~/.tmux.conf
+# For ~/.tmux.conf
 tmux source-file ~/.tmux.conf
 
-# If using ~/.config/tmux/tmux.conf
+# For ~/.config/tmux/tmux.conf
 tmux source-file ~/.config/tmux/tmux.conf
 ```
 
-4. **Install plugins (inside tmux):**
-Press `Prefix + I` (now `Ctrl + Space` followed by `I`) to install all plugins.
+4. **Install Plugins:**
+Inside tmux, press `Prefix + I` (Ctrl + Space + I) to install all plugins.
 
-## Neovim with Tmux Navigator
+### Neovim with Tmux Navigator
 
-### Configure Neovim
-
-1. **Navigate to Neovim config directory:**
+1. **Create Neovim Config Directory:**
 ```bash
 mkdir -p ~/.config/nvim/lua/custom
 cd ~/.config/nvim
 ```
 
-2. **Create/edit plugins configuration** (`lua/custom/plugins.lua`):
+2. **Configure Plugins** (`lua/custom/plugins.lua`):
 ```lua
 local plugins = {
   {
@@ -185,7 +303,7 @@ local plugins = {
 return plugins
 ```
 
-3. **Configure key mappings** (`lua/custom/mappings.lua`):
+3. **Configure Key Mappings** (`lua/custom/mappings.lua`):
 ```lua
 local M = {}
 
@@ -201,7 +319,7 @@ M.general = {
 return M
 ```
 
-### Key Binding Summary
+### Key Binding Reference
 
 **Tmux Prefix:** `Ctrl + Space` (instead of default `Ctrl + b`)
 
@@ -214,22 +332,15 @@ return M
 - `Shift + Left/Right` - Switch between windows
 - `"` - Split window vertically
 - `%` - Split window horizontally
+- `Prefix + c` - Create new window
+- `Prefix + 1` - Window selection
 
-**Others:**
-- `Prefix + c` = create new window
-- `Prefix + 1` = window selection
-- `tmux ls` = list all windows
-- `Prefix + %` = split horizontal
-- `Prefix + "` = split vertical
-- `Prefix + R` = search commands
-- `tmux kill server` = exit all terminals
-- `tmux kill-session` = kill current session
-- `tmux kill-session -t session_name` = close certain session
-- `tmux kill-session -a` = kill all sessions but current
-- `exit` = closes that window/pane
-- `tmux new -s agent-ai` = create new session with a name
-- `tmux rename-window "Agent AI"` = close rename current session
-- `tmux source ~/.tmux.conf` = reload tmux.conf
+**Session Management:**
+- `tmux ls` - List all sessions
+- `tmux new -s session_name` - Create named session
+- `tmux rename-window "Window Name"` - Rename current window
+- `tmux kill-session -t session_name` - Kill specific session
+- `tmux kill-session -a` - Kill all sessions except current
 
 **Copy Mode (Vi-style):**
 - `Prefix + [` - Enter copy mode
@@ -237,15 +348,47 @@ return M
 - `Ctrl + v` - Rectangle toggle
 - `y` - Copy selection
 
+**Configuration Management:**
+- `tmux source ~/.tmux.conf` - Reload configuration
+- `Prefix + R` - Search commands
+- `tmux kill server` - Exit all terminals
+
+---
+
 ## Installation Checklist
 
+### Core Terminal Environment
 - [ ] Install Ghostty terminal
-- [ ] Install tmux and TPM
-- [ ] Configure tmux with the provided config
+- [ ] Install Tmux and TPM
+- [ ] Configure Tmux with provided config
+- [ ] Test Tmux navigation and keybindings
+
+### Text Editors & IDEs
 - [ ] Install Neovim
-- [ ] Set up Neovim with tmux navigator
-- [ ] Install Lazygit
-- [ ] Update Git to latest version
+- [ ] Install Sublime Text
+- [ ] Install Lite XL (optional)
+- [ ] Install PyCharm Community (optional)
+
+### AI Development Tools
+- [ ] Install Claude Code
+- [ ] Install Cursor AI CLI
 - [ ] Install AmpCode (optional)
 
-After setup, you'll have seamless navigation between Neovim and tmux with a beautiful Catppuccin theme and enhanced productivity workflow.
+### Version Control
+- [ ] Update Git to latest version
+- [ ] Install Lazygit
+- [ ] Install GitHub CLI
+
+### Password Management
+- [ ] Install Pass CLI
+- [ ] Set up GPG key
+- [ ] Initialize password store
+
+### Integration & Configuration
+- [ ] Set up Neovim with Tmux navigator
+- [ ] Test seamless navigation between tools
+- [ ] Verify all keybindings work correctly
+
+---
+
+**After completing this setup, you'll have a comprehensive development environment with seamless navigation between Neovim and Tmux, AI-powered development tools, and a beautiful Catppuccin theme for enhanced productivity.**

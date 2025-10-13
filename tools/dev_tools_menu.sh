@@ -306,6 +306,32 @@ install_cursor() {
     fi
 }
 
+# Function to install Sublime Text
+install_sublime() {
+    print_info "Installing Sublime Text..."
+    
+    if command_exists subl; then
+        print_warning "Sublime Text is already installed"
+        subl --version
+    else
+        # Install GPG key
+        print_info "Adding Sublime Text GPG key..."
+        wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
+        
+        # Add repository
+        print_info "Adding Sublime Text repository..."
+        echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+        
+        # Update and install
+        print_info "Installing Sublime Text..."
+        sudo apt update
+        sudo apt install -y sublime-text
+        
+        print_success "Sublime Text installed successfully"
+        print_info "Launch with: subl"
+    fi
+}
+
 # Function to install all tools
 install_all() {
     print_info "Installing all development tools..."
@@ -333,6 +359,8 @@ install_all() {
     echo ""
     install_cursor
     echo ""
+    install_sublime
+    echo ""
     
     print_success "All tools installed successfully!"
 }
@@ -355,8 +383,9 @@ show_menu() {
     echo -e "${GREEN}9)${NC} Install Lite XL (Markdown Editor)"
     echo -e "${GREEN}10)${NC} Install Pass CLI (Password Manager)"
     echo -e "${GREEN}11)${NC} Install Cursor AI CLI"
+    echo -e "${GREEN}12)${NC} Install Sublime Text"
     echo ""
-    echo -e "${YELLOW}12)${NC} Install All Tools"
+    echo -e "${YELLOW}13)${NC} Install All Tools"
     echo ""
     echo -e "${RED}0)${NC} Exit"
     echo ""
@@ -405,6 +434,9 @@ main() {
                 install_cursor
                 ;;
             12)
+                install_sublime
+                ;;
+            13)
                 install_all
                 ;;
             0)
