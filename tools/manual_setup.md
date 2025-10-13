@@ -22,6 +22,12 @@ curl -fsSL https://claude.ai/install.sh | bash
 curl https://cursor.com/install -fsS | bash
 ```
 
+### Pass password manager
+```bash
+#Install pass and follow instructions on Pass Installation Guide
+sudo apt install pass
+```
+
 ### Sublime text editor
 ```bash
 # Install GPG key
