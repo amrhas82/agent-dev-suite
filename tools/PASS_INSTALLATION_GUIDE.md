@@ -138,13 +138,59 @@ cd ~/.password-store
 #initialize repo
 pass git init
 
-# add all files or specific files
-pass git add .
+# Add files (be careful with 'pass git add .' - might include GPG keys)
+pass git add *.gpg
+# OR be more specific:
+find . -name "*.gpg" -type f | xargs pass git add
+
+#push to remote using https (need sudo apt install gh)
+gh auth login
 pass git remote set-rul origin https://github.com/amrhas82/pwd.git
 
-pass git add .
+# Commit
 pass git commit -m "Initial password store commit"
+
+# Push (no need for 'gh auth login' if using HTTPS)
 pass git push -u origin master
+```
+
+### Creating and Using a New Branch
+```bash
+# Create and switch to new branch
+pass git checkout -b new-branch-name
+
+# Or create branch then switch to it
+pass git branch new-branch-name
+pass git checkout new-branch-name
+
+# Add, commit, and push to the new branch
+pass git add *.gpg
+pass git commit -m "Commit on new branch"
+pass git push -u origin new-branch-name
+```
+
+### Complete Branch Workflow Example
+```bash
+cd ~/.password-store
+
+# Create feature branch for new passwords
+pass git checkout -b add-work-passwords
+
+# Add new passwords
+pass insert work/email
+pass insert work/vpn
+
+# Commit the new passwords
+pass git add .
+pass git commit -m "Add work-related passwords"
+
+# Push to the new branch
+pass git push -u origin add-work-passwords
+
+# Later, merge to main if desired
+pass git checkout master
+pass git merge add-work-passwords
+pass git push origin master
 ```
 
 ### Rename branch to main
