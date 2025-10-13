@@ -148,8 +148,6 @@ pass git remote set-url origin https://github.com/amrhas82/store.git
 pass git push origin master
 ```
 
-
-
 ## Setting Up on New Machine
 
 ### Import Keys
