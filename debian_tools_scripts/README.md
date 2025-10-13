@@ -1,4 +1,4 @@
-All scripts are courtesy of [Just a Guy Linux](https://codeberg.org/justaguylinux/)
+All scripts are courtesy of [JustAGuy Linux](https://codeberg.org/justaguylinux/)
 
 Hey there! I'm gradually migrating my open-source work to Codeberg to support a community-driven, non-profit platform.
 🔗 Find Me On Both Platforms:
