@@ -12,6 +12,7 @@
 9. [Best Practices](#best-practices)
 10. [Troubleshooting](#troubleshooting)
 11. [Security Notes](#security-notes)
+12. [Youtube Tutorial](https://youtu.be/FhwsfH2TpFA?si=p0oIKE-UipAupgGA)
 
 ## Installation
 
