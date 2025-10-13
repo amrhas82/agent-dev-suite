@@ -2,12 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/debian_setup/tools_scripts/bspwm-setup" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/debian_setup/tools_scripts/butterbash" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/debian_setup/tools_scripts/butternotes" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/debian_setup/tools_scripts/butterscripts" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/debian_setup/tools_scripts/dwm-setup" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/debian_setup/tools_scripts/nvim" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/debian_setup/tools_scripts/openbox-setup" vcs="Git" />
   </component>
 </project>

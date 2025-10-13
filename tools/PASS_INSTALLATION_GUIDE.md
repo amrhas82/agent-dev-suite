@@ -1,5 +1,18 @@
 # Pass Password Manager - Installation and Usage Guide
 
+## Table of Contents
+1. [Installation](#installation)
+2. [GPG Key Setup](#gpg-key-setup)
+3. [Pass Store Initialization](#pass-store-initialization)
+4. [Basic Pass Operations](#basic-pass-operations)
+5. [Git Operations](#git-operations)
+6. [Setting Up on New Machine](#setting-up-on-new-machine)
+7. [Using Pass in Scripts](#using-pass-in-scripts)
+8. [Directory Structure](#directory-structure)
+9. [Best Practices](#best-practices)
+10. [Troubleshooting](#troubleshooting)
+11. [Security Notes](#security-notes)
+
 ## Installation
 
 ### Install Pass
@@ -28,21 +41,22 @@ gpg -K
 gpg --edit-key xxxxxxx
 gpg> expire
 # Follow prompts to set no expiration
+gpg> quit
 ```
 
 ### Create Backup Keys
 ```bash
 # Create public key for recovery
-gpg --output public.gpg --armor --export avoidaccess@msn.com
+gpg --output public.gpg --armor --export your-email@example.com
 
 # Create private key for recovery
-gpg --output private.gpg --armor --export-secret-key avoidaccess@msn.com
+gpg --output private.gpg --armor --export-secret-key your-email@example.com
 ```
 
 ### Set Key Trust Level
 ```bash
 # Edit key to set trust level
-gpg --edit-key avoidaccess@msn.com
+gpg --edit-key your-email@example.com
 gpg> trust
 # Select option 5 (ultimate trust)
 gpg> quit
@@ -53,13 +67,13 @@ gpg> quit
 ### Initialize Pass Store
 ```bash
 # Initialize pass store using your GPG key ID
-pass init xxxxxx
+pass init your-gpg-key-id
 ```
 
 ### Initialize Git Repository
 ```bash
 # Initialize git repository for pass store
-pass git init xxxxxx
+pass git init your-gpg-key-id
 # Or simply
 pass git init
 ```
@@ -106,22 +120,25 @@ pass show -c for/provider
 pass rm for/provider
 ```
 
-### locate *.gpg private and public keys
+### Locate GPG Keys
 ```bash
-# Remove a password entry
+# Navigate to GPG directory
 cd ~/.gnupg
 ls
 ```
 
 ## Git Operations
 
-### Check Git
+### Check Git Status
 ```bash
 # Check commit log
 pass git log
 
-# Check commit log
+# Check all branches
 pass git branch -a
+
+# Check git status
+pass git status
 ```
 
 ### Revert Changes
@@ -130,12 +147,12 @@ pass git branch -a
 pass git revert HEAD
 ```
 
-### Create initial commit
+### Create Initial Commit
 ```bash
-#locate pass directory
+# Locate pass directory
 cd ~/.password-store
 
-#initialize repo
+# Initialize repo
 pass git init
 
 # Add files (be careful with 'pass git add .' - might include GPG keys)
@@ -143,9 +160,9 @@ pass git add *.gpg
 # OR be more specific:
 find . -name "*.gpg" -type f | xargs pass git add
 
-#push to remote using https (need sudo apt install gh)
+# Push to remote using https (need sudo apt install gh)
 gh auth login
-pass git remote set-rul origin https://github.com/amrhas82/pwd.git
+pass git remote set-url origin https://github.com/username/pwd.git
 
 # Commit
 pass git commit -m "Initial password store commit"
@@ -193,7 +210,7 @@ pass git merge add-work-passwords
 pass git push origin master
 ```
 
-### Rename branch to main
+### Rename Branch to Main
 ```bash
 cd ~/.password-store
 git branch -M main
@@ -203,7 +220,7 @@ pass git push -u origin main
 ### Push to Remote Repository
 ```bash
 # Add remote repository
-pass git remote set-url origin https://github.com/amrhas82/store.git
+pass git remote set-url origin https://github.com/username/store.git
 
 # Push to remote
 pass git push origin master
