@@ -108,16 +108,35 @@ pass rm for/provider
 
 ## Git Operations
 
-### Check Git Log
+### Check Git
 ```bash
 # Check commit log
 pass git log
+
+# Check commit log
+pass git branch -a
 ```
+
 
 ### Revert Changes
 ```bash
 # Revert last git change
 pass git revert HEAD
+```
+
+### Create initial commit
+```bash
+cd ~/.password-store
+pass git add .
+pass git commit -m "Initial password store commit"
+pass git push -u origin master
+```
+
+### Rename branch to main
+```bash
+cd ~/.password-store
+git branch -M main
+pass git push -u origin main
 ```
 
 ### Push to Remote Repository
@@ -126,8 +145,10 @@ pass git revert HEAD
 pass git remote add origin git@github.com:amrhas82/pwd.git
 
 # Push to remote
-pass git push origin main
+pass git push origin master
 ```
+
+
 
 ## Setting Up on New Machine
 
