@@ -1,12 +1,5 @@
 # Awesome MCP Servers [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[![ไทย](https://img.shields.io/badge/Thai-Click-blue)](../awesome-mcp-servers/README-th.md)
-[![English](https://img.shields.io/badge/English-Click-yellow)](awesome_mcp_servers.md)
-[![繁體中文](https://img.shields.io/badge/繁體中文-點擊查看-orange)](../awesome-mcp-servers/README-zh_TW.md)
-[![简体中文](https://img.shields.io/badge/简体中文-点击查看-orange)](../awesome-mcp-servers/README-zh.md)
-[![日本語](https://img.shields.io/badge/日本語-クリック-青)](../awesome-mcp-servers/README-ja.md)
-[![한국어](https://img.shields.io/badge/한국어-클릭-yellow)](../awesome-mcp-servers/README-ko.md)
-[![Português Brasileiro](https://img.shields.io/badge/Português_Brasileiro-Clique-green)](../awesome-mcp-servers/README-pt_BR.md)
 [![Discord](https://img.shields.io/discord/1312302100125843476?logo=discord&label=discord)](https://glama.ai/mcp/discord)
 [![Subreddit subscribers](https://img.shields.io/reddit/subreddit-subscribers/mcp?style=flat&logo=reddit&label=subreddit)](https://www.reddit.com/r/mcp/)
 
