@@ -184,6 +184,9 @@ curl -fsSL https://opencode.ai/install | bash
 #start it
 opencode
 opencode run "Explain how closures work in JavaScript"
+
+#if it doesn't start
+source ~/.bashrc
 ```
 
 **Features:**
