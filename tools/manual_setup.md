@@ -175,6 +175,25 @@ amp --jetbrains
 
 ---
 
+### Open Code
+CLI based open-source 
+
+```bash
+curl -fsSL https://opencode.ai/install | bash
+
+#start it
+opencode
+opencode run "Explain how closures work in JavaScript"
+```
+
+**Features:**
+- CLI based 
+- AI-powered code suggestions
+- AI Agent agnostic BYOK
+- Works with openrouter and free models
+
+---
+
 ## Version Control Tools
 
 ### Git (Latest Version)
