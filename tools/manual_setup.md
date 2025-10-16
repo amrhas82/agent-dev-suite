@@ -65,6 +65,36 @@ sudo apt install sublime-text
 - Extensive plugin ecosystem
 - Cross-platform support
 
+
+### BMAD Method - Universal AI Agent Framework
+#### [Github Repo]((https://github.com/bmad-code-org/BMAD-METHOD)) | [YouTube Setup](https://www.youtube.com/watch?v=fD8NLPU0WYU&t=445s)
+- Two-Phase Process: Uses distinct planning and execution phases to structure development.
+- Collaborative Planning: AI agents partner with humans to create detailed specifications.
+- Context-Rich Execution: Plans are transformed into development stories with full context and guidance.
+- Eliminates Key Flaws: Solves the core problems of planning inconsistency and context loss in AI development.
+
+```bash
+ sudo npx bmad-method install
+ # BMad Agile Core System (v4.44.1) .bmad-core
+ # Will the PRD (Product Requirements Document) be sharded into multiple files? (Y/n) 
+ Yes
+ # Will the architecture documentation be sharded into multiple files? (Y/n) 
+ Yes
+ # select your AI Agents
+ Claude Code
+ Cursor
+ Kilocode
+ # Would you like to include pre-built web bundles? (standalone files for ChatGPT, Claude, Gemini) (y/N)
+ Yes
+ ❯ All available bundles (agents, teams, expansion packs)
+```
+
+**Features:**
+- Multi-role for any IDE AI Agent
+- Less context consumption and detailed instructions
+- Focused and guard-railed development
+- Helps you refine your product ideas
+
 ### Lite XL
 Lightweight, extensible text editor with Lua scripting.
 
