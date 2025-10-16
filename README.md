@@ -106,6 +106,15 @@ Comprehensive setup guides for window managers and productivity tools on Debian-
 
 Structured 3-step process for building features with AI-powered IDEs and CLIs (Cursor, Claude Code, Windsurf, etc.).
 
+**BMAD Method - Universal AI Agent Framework:**
+- Two-Phase Process: Uses distinct planning and execution phases to structure development
+- Collaborative Planning: AI agents partner with humans to create detailed specifications
+- Context-Rich Execution: Plans are transformed into development stories with full context and guidance
+- Eliminates Key Flaws: Solves the core problems of planning inconsistency and context loss in AI development
+- Installation: `sudo npx bmad-method install`
+- Features: Multi-role for any IDE AI Agent, less context consumption, focused and guard-railed development
+- Resources: [GitHub Repo](https://github.com/bmad-code-org/BMAD-METHOD) | [YouTube Setup](https://www.youtube.com/watch?v=fD8NLPU0WYU&t=445s)
+
 **Core Workflow Files:**
 
 - **`1-create-prd.md`** - Product Requirement Document (PRD) generation guide
@@ -118,6 +127,13 @@ Structured 3-step process for building features with AI-powered IDEs and CLIs (C
 
 - **`3-process-task-list.md`** - Task execution and tracking guide
   - One sub-task at a time implementation with git commits and test-driven workflow
+
+- **BMAD Method** - Universal AI Agent Framework
+  - Two-Phase Process: Uses distinct planning and execution phases to structure development
+  - Collaborative Planning: AI agents partner with humans to create detailed specifications
+  - Context-Rich Execution: Plans are transformed into development stories with full context and guidance
+  - Installation: `sudo npx bmad-method install`
+  - Resources: [GitHub Repo](https://github.com/bmad-code-org/BMAD-METHOD) | [YouTube Setup](https://www.youtube.com/watch?v=fD8NLPU0WYU&t=445s)
 
 **Additional Guides:**
 
@@ -170,8 +186,9 @@ Structured 3-step process for building features with AI-powered IDEs and CLIs (C
    - Step 1: Use `agents_guide/1-create-prd.md` to generate a PRD
    - Step 2: Use `agents_guide/2-generate-tasks.md` to create task list
    - Step 3: Use `agents_guide/3-process-task-list.md` to implement tasks
-2. **Read** `agents_guide/agents_guide.md` for detailed workflow documentation
-3. **Explore** `agents_guide/awesome_mcp_servers.md` for MCP server integrations
+2. **BMAD Method**: Install with `sudo npx bmad-method install` for universal AI agent framework
+3. **Read** `agents_guide/agents_guide.md` for detailed workflow documentation
+4. **Explore** `agents_guide/awesome_mcp_servers.md` for MCP server integrations
 
 ## 💡 Use Cases
 
@@ -180,7 +197,7 @@ Structured 3-step process for building features with AI-powered IDEs and CLIs (C
 - ✅ Set up complete Ubuntu/Debian development environment with modern tools
 - ✅ Configure Tmux, Neovim, Lite XL, Sublime Text with optimal settings
 - ✅ Install window managers (BSPWM, DWM, Openbox) and productivity tools
-- ✅ Use AI agents (Claude, Cursor, etc.) to build features systematically
+- ✅ Use AI agents (Claude, Cursor, BMAD Method, etc.) to build features systematically
 - ✅ Break down complex features into manageable, trackable tasks
 - ✅ Automate development tool installation and configuration
 - ✅ Set up system backup, recovery, and hibernation procedures
