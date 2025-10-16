@@ -146,7 +146,7 @@ curl -fsSL https://claude.ai/install.sh | bash
 - Context-aware assistance
 - Multiple language support
 
-### Cursor AI CLI
+### Cursor CLI
 AI-powered code editor with advanced features.
 
 ```bash
@@ -159,7 +159,7 @@ curl https://cursor.com/install -fsS | bash
 - Multi-file context understanding
 - Integrated terminal and debugging
 
-### AmpCode
+### AmpCode CLI
 AI-powered development environment with JetBrains integration.
 
 ```bash
@@ -187,6 +187,11 @@ opencode run "Explain how closures work in JavaScript"
 
 #if it doesn't start
 source ~/.bashrc
+
+# BYOK. add the API keys for the provider using
+opencode auth login
+
+#When you add a provider’s API keys with opencode auth login, they are stored in ~/.local/share/opencode/auth.json
 ```
 
 **Features:**
