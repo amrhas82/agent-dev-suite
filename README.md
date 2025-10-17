@@ -1,244 +1,220 @@
-# AI-PRDs: Development Environment & Agent Workflow Setup
+# Agent Dev Suite
 
-A comprehensive repository providing Ubuntu/Debian development environment setup tools and AI agent workflow guides for structured feature development.
-
-> **Note:** All setup tools and scripts are designed exclusively for **Ubuntu/Debian** Linux distributions.
-
-## 📁 Repository Structure
-
-### `/tools` - Development Environment Setup
-
-Scripts and configuration files for Ubuntu/Debian development environment setup.
-
-**Core Installation Scripts:**
-
-- **`dev_tools_menu.sh`** - Interactive menu for installing development tools
-  - Includes: Claude Code, Ghostty Terminal, Tmux + TPM, Neovim, AmpCode, Lazygit, Git updates, PyCharm Community, Lite XL, Pass CLI, Cursor AI CLI, Sublime Text
-  - Usage: `chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh`
-
-- **`master_tmux_setup.sh`** - Complete Tmux installation and configuration
-  - Builds from source, installs TPM, configures Catppuccin theme
-  - Vim-style navigation and custom keybindings
-
-- **`master_neovim_setup.sh`** - Complete Neovim installation and configuration
-  - Installs via PPA, sets up file explorer, Tokyonight theme
-  - Integrates Lazygit, Telescope, Treesitter
-
-- **`master_litexl_setup.sh`** - Complete Lite XL installation and configuration
-  - Builds from source with SDL3 support, includes markdown preview
-  - Usage: `chmod +x master_litexl_setup.sh && ./master_litexl_setup.sh`
-
-**Documentation & Guides:**
-
-- **`manual_setup.md`** - Step-by-step manual installation guide
-  - Terminal, development, password management, AI, and Git tools
-  - Configuration instructions and key binding reference
-
-- **`tmux-install-guide.md`** - Comprehensive Tmux installation guide
-  - Building from source, TPM setup, troubleshooting, configuration
-
-- **`PASS_INSTALLATION_GUIDE.md`** - Complete Pass CLI password manager setup
-  - Installation, GPG setup, password store configuration, security practices
-
-- **`git_guide.md`** - The Ultimate Git Guide
-  - Command reference, repository management, advanced operations, CI/CD workflows
-
-**Configuration Files:**
-
-- **`tmux.conf`** - Production-ready Tmux configuration
-  - Custom prefix key (Ctrl+a), vim-style navigation, Catppuccin theme
-  - Plugin integration (TPM, vim-tmux-navigator, catppuccin, yank, copycat)
-
-**Utility Scripts:**
-
-- **`validate_scripts.sh`** - Script validation and testing utility
-  - Usage: `chmod +x validate_scripts.sh && ./validate_scripts.sh`
-
-- **`SPLIT_SUMMARY.md`** - Repository organization summary
-
-### `/debian_setup` - Debian System Setup & Recovery
-
-Specialized guides for Debian-based system setup, recovery, and maintenance.
-
-**System Setup & Recovery Guides:**
-
-- **`clonezilla-zorin-guide.md`** - Complete Clonezilla backup and restore guide for Zorin OS
-  - System backup strategies, live USB creation, full system backup/restore procedures
-
-- **`partition_recovery_guide.md`** - Advanced partition recovery and data rescue guide
-  - Recovering deleted/corrupted partitions using TestDisk, PhotoRec, GParted
-
-- **`zorin-hibernate-guide.md`** - Zorin OS hibernation setup and configuration
-  - Enabling hibernation, swap configuration, GRUB settings, troubleshooting
-
-### `/debian_tools_scripts` - Window Manager & Productivity Tools
-
-Comprehensive setup guides for window managers and productivity tools on Debian-based systems.
-
-**Window Manager Setups:**
-
-- **`bspwm_setup.md`** - Minimal but functional BSPWM rice script
-  - Complete installation, Polybar status bar, enhanced keybindings, GTK theme integration
-
-- **`dwm_setup.md`** - Minimal suckless DWM 6.6 setup
-  - Suckless philosophy, multiple layouts, named scratchpads, comprehensive patches
-
-- **`openbox_setup.md`** - Complete Openbox configuration script
-  - Polished theme, smart automation, lightweight floating window manager
-
-**Development Tools:**
-
-- **`nvim_setup.md`** - Minimal, fast, and intuitive Neovim configuration
-  - Fast startup via lazy.nvim, buffer-based file explorer, GitHub-inspired theme
-
-**Productivity Tools:**
-
-- **`butterbase_setup.md`** - Smooth, modular Bash configuration framework
-  - FZF integration, git-aware prompts, extensive aliases, works with any shell
-
-- **`butternotes_setup.md`** - Streamlined note-taking and todo management tool
-  - Smart fzf-enhanced project management, "inbox first" philosophy
-
-- **`butterscripts_setup.md`** - Modular collection of utility scripts for Debian setups
-  - Automates installs, configures tools, applies theming, organized by functionality
-
-### `/agents_guide` - AI Agent Workflow
-
-Structured 3-step process for building features with AI-powered IDEs and CLIs (Cursor, Claude Code, Windsurf, etc.).
-
-**BMAD Method - Universal AI Agent Framework:**
-- Two-Phase Process: Uses distinct planning and execution phases to structure development
-- Collaborative Planning: AI agents partner with humans to create detailed specifications
-- Context-Rich Execution: Plans are transformed into development stories with full context and guidance
-- Eliminates Key Flaws: Solves the core problems of planning inconsistency and context loss in AI development
-- Installation: `sudo npx bmad-method install`
-- Features: Multi-role for any IDE AI Agent, less context consumption, focused and guard-railed development
-- Resources: [GitHub Repo](https://github.com/bmad-code-org/BMAD-METHOD) | [YouTube Setup](https://www.youtube.com/watch?v=fD8NLPU0WYU&t=445s)
-
-**Core Workflow Files:**
-
-- **`1-create-prd.md`** - Product Requirement Document (PRD) generation guide
-  - Instructions for AI to generate detailed PRDs with clarifying questions template
-  - Saves to `/tasks/[n]-prd-[feature-name].md`
-
-- **`2-generate-tasks.md`** - Task list generation from PRD
-  - Two-phase process: high-level tasks, then sub-tasks
-  - Saves to `/tasks/tasks-[prd-file-name].md`
-
-- **`3-process-task-list.md`** - Task execution and tracking guide
-  - One sub-task at a time implementation with git commits and test-driven workflow
-
-- **BMAD Method** - Universal AI Agent Framework
-  - Two-Phase Process: Uses distinct planning and execution phases to structure development
-  - Collaborative Planning: AI agents partner with humans to create detailed specifications
-  - Context-Rich Execution: Plans are transformed into development stories with full context and guidance
-  - Installation: `sudo npx bmad-method install`
-  - Resources: [GitHub Repo](https://github.com/bmad-code-org/BMAD-METHOD) | [YouTube Setup](https://www.youtube.com/watch?v=fD8NLPU0WYU&t=445s)
-
-**Additional Guides:**
-
-- **`agents_guide.md`** - Complete workflow documentation
-  - Overview of 3-step process (PRD → Tasks → Implementation)
-  - Tool-specific instructions and best practices
-
-- **`AGENT_RULES.md`** - Communication and work preferences
-  - How to work with AI agents effectively, tool preferences, tech stack preferences
-
-- **`CLAUDE_UI_BEST_PRACTICE.MD`** - UI development best practices with Claude Code
-  - Communication strategies, screenshot usage, iterative development workflow
-
-- **`awesome_mcp_servers.md`** - Curated list of awesome Model Context Protocol (MCP) servers
-  - Production-ready and experimental MCP servers for extending AI capabilities
-  - File access, database connections, API integrations, and contextual services
-
-### Root Files
-
-- **`LICENSE`** - Apache License 2.0
-- **`VIBE_CONSULT_CODE.md`** - Consulting services information
+Complete Ubuntu/Debian development environment setup with AI-assisted workflows and agent-driven development.
 
 ## 🚀 Quick Start
 
-### Development Environment Setup:
+### For Development Environment Setup:
+```bash
+git clone https://github.com/your-repo/agent-dev-suite.git
+cd agent-dev-suite/tools
+chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
+```
 
-1. **Interactive Menu** (Recommended):
-   ```bash
-   cd tools && chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
-   ```
+### For AI-Assisted Development:
+- **Simple 3-step workflow**: See `ai/simple/`
+- **BMAD framework**: See `ai/bmad/`
 
-2. **Automated Setup**:
-   ```bash
-   cd tools && chmod +x master_*_setup.sh && ./master_tmux_setup.sh && ./master_neovim_setup.sh && ./master_litexl_setup.sh
-   ```
+## 📁 What's Included
 
-3. **Manual Installation**: Follow `tools/manual_setup.md`
+### 🤖 AI Workflows (`ai/`)
+Two comprehensive approaches to AI-assisted development:
 
-### Window Manager & Productivity Tools:
+#### Simple Workflow (`ai/simple/`)
+- **3-step process**: PRD → Tasks → Implementation
+- Perfect for features, small projects, and quick iterations
+- Streamlined agent guidance for rapid development
 
-- Browse `debian_tools_scripts/` for BSPWM, DWM, Openbox, Neovim, ButterBash, ButterNotes, ButterScripts guides
+#### BMAD Framework (`ai/bmad/`)
+- **Full AI team simulation**: PM, Analyst, Architect, Dev, QA, UX Expert
+- Role-based development with specialized agents
+- Comprehensive project management and quality gates
+- Ideal for complex, production-grade applications
 
-### System Setup & Recovery:
+### 🛠️ Development Tools (`tools/`)
+- **Automated installation scripts** for Tmux, Neovim, Lite XL
+- **Interactive dev tools menu** for easy setup
+- **Configuration files** and comprehensive guides
+- **AI development utilities** and automation scripts
 
-- Follow `debian_setup/` guides for Clonezilla backup/restore, partition recovery, hibernation setup
+### 🖥️ Environment Setup (`env/`)
 
-### AI Agent Workflow:
+#### System Setup (`env/setup/`)
+- **Backup & recovery** with Clonezilla guides
+- **Partition management** and recovery procedures
+- **System configuration** for optimal development environment
+- **Hibernate setup** and power management
 
-1. **3-step process**:
-   - Step 1: Use `agents_guide/1-create-prd.md` to generate a PRD
-   - Step 2: Use `agents_guide/2-generate-tasks.md` to create task list
-   - Step 3: Use `agents_guide/3-process-task-list.md` to implement tasks
-2. **BMAD Method**: Install with `sudo npx bmad-method install` for universal AI agent framework
-3. **Read** `agents_guide/agents_guide.md` for detailed workflow documentation
-4. **Explore** `agents_guide/awesome_mcp_servers.md` for MCP server integrations
+#### Development Environments (`env/tools/`)
+- **Window managers**: BSPWM, DWM, Openbox configurations
+- **Productivity tools**: ButterBash, ButterNotes, ButterScripts
+- **Editor setups**: Neovim configuration and plugins
+- **Shell environments**: Customized terminal setups
 
-## 💡 Use Cases
+### 🔌 Integrations (`integrations/`)
+- **MCP Servers**: [awesome_mcp_servers.md](integrations/awesome_mcp_servers.md) - 200+ comprehensive list of Model Context Protocol servers
+- **External tool integrations** for enhanced AI capabilities
+- **API connections** and service integrations
+- **Extension packs** for specialized development workflows
 
-**This repository is for you if you want to:**
+## 🎯 Use Cases
 
-- ✅ Set up complete Ubuntu/Debian development environment with modern tools
-- ✅ Configure Tmux, Neovim, Lite XL, Sublime Text with optimal settings
-- ✅ Install window managers (BSPWM, DWM, Openbox) and productivity tools
-- ✅ Use AI agents (Claude, Cursor, BMAD Method, etc.) to build features systematically
-- ✅ Break down complex features into manageable, trackable tasks
-- ✅ Automate development tool installation and configuration
-- ✅ Set up system backup, recovery, and hibernation procedures
-- ✅ Explore MCP server integrations for enhanced AI capabilities
+This suite is designed for developers who want to:
 
-## 🛠️ System Requirements
+### 🏗️ **Environment Setup**
+- Set up a complete Ubuntu/Debian development environment from scratch
+- Configure optimal development tools and workflows
+- Automate system setup and maintenance tasks
 
-- **Operating System:** Ubuntu or Debian Linux distributions
-- **Prerequisites:** `git`, `curl`, `sudo` access
+### 🤖 **AI-Driven Development**
+- Use AI agents to build features systematically
+- Implement role-based development workflows
+- Leverage specialized AI agents for different development phases
 
-## 📚 Additional Resources
+### 🚀 **Productivity Enhancement**
+- Streamline development workflows with automation
+- Use proven configurations for popular tools
+- Integrate AI capabilities into existing workflows
 
-### Development Tools
-- **Tmux Navigation:** See `tools/manual_setup.md` for keybinding reference
-- **Neovim Shortcuts:** Prefix = Space, Ctrl+n for file tree, Space+ff for file search
-- **Lite XL:** Markdown preview with Ctrl+Shift+M
-- **Pass CLI:** Complete setup guide in `tools/PASS_INSTALLATION_GUIDE.md`
-- **Git Operations:** Ultimate Git reference guide in `tools/git_guide.md`
+## 📚 Documentation Structure
 
-### Window Managers & Productivity
-- **BSPWM, DWM, Openbox:** Complete guides in `debian_tools_scripts/`
-- **ButterBash, ButterNotes:** Shell and note-taking systems in `debian_tools_scripts/`
+### Getting Started
+- [Quick Start Guide](#-quick-start)
+- [Installation Instructions](tools/README.md)
+- [Environment Configuration](env/)
 
-### System Recovery & Setup
-- **Clonezilla, Partition Recovery, Hibernation:** Guides in `debian_setup/`
+### AI Development
+- [Simple Workflow Guide](ai/simple/1-create-prd.md)
+- [BMAD Framework Documentation](ai/bmad/.bmad-core/user-guide.md)
+- [Agent Configuration](ai/bmad/.bmad-core/agents/)
 
-### AI Workflow & MCP Servers
-- **AI Workflow Demo:** [How I AI podcast](https://www.youtube.com/watch?v=fD4ktSkNCw4)
-- **MCP Servers:** Explore `agents_guide/awesome_mcp_servers.md` for AI capability extensions
+### Tools & Environment
+- [Development Tools Guide](tools/guides/)
+- [Window Manager Setup](env/tools/)
+- [System Administration](env/setup/)
+
+### Integrations
+- [MCP Server Integration](integrations/awesome_mcp_servers.md) - 200+ servers
+- [External Tool Setup](integrations/README.md)
+
+## 🛡️ System Requirements
+
+- **OS**: Ubuntu 20.04+ or Debian 11+
+- **Prerequisites**: `git`, `curl`, `sudo` access
+- **Memory**: 4GB+ RAM recommended
+- **Storage**: 10GB+ free space
+- **Network**: Internet connection for AI services
+
+## 🔄 Workflow Examples
+
+### Simple 3-Step Workflow
+```bash
+# 1. Create PRD
+cd ai/simple
+./1-create-prd.md
+
+# 2. Generate Tasks
+./2-generate-tasks.md
+
+# 3. Process Task List
+./3-process-task-list.md
+```
+
+### BMAD Framework
+```bash
+# Initialize BMAD project
+cd ai/bmad/.bmad-core
+./user-guide.md
+
+# Configure agents
+./agents/
+./workflows/
+```
+
+### Environment Setup
+```bash
+# Interactive tools setup
+cd tools
+./dev_tools_menu.sh
+
+# Manual setup
+./master_tmux_setup.sh
+./master_neovim_setup.sh
+```
+
+## 🏗️ Architecture
+
+```
+agent-dev-suite/
+├── ai/                          # AI workflows and agents
+│   ├── simple/                  # 3-step workflow
+│   └── bmad/                    # Full AI team framework
+├── env/                         # Environment configuration
+│   ├── setup/                   # System setup
+│   └── tools/                   # Development environments
+├── tools/                       # Development utilities
+├── integrations/                # External integrations
+└── docs/                        # Comprehensive documentation
+```
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to:
-- Open issues for bugs or feature requests
-- Submit pull requests for improvements
-- Share your setup configurations and workflows
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+### Development Workflow
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
 ## 📄 License
 
-Apache License 2.0 - See [LICENSE](LICENSE) file for details
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+## 🔗 Related Projects
+
+- [BMAD Framework](https://github.com/bmad-framework) - Core AI development framework
+- [MCP Protocol](https://modelcontextprotocol.io) - Model Context Protocol specifications
+- [Ubuntu Development Environment](https://ubuntu.com/desktop/developers) - Ubuntu development setup
+
+## 📊 Project Status
+
+- ✅ **Environment Setup**: Complete with automated scripts
+- ✅ **Simple AI Workflow**: Ready for production use
+- ✅ **BMAD Framework**: Full implementation with all agents
+- ✅ **Integration Support**: MCP servers and external tools
+- 🔄 **Documentation**: Continuously improving
+- 🚧 **New Features**: Actively developing
+
+## 🆘 Support
+
+### Getting Help
+- **Documentation**: Check the relevant section in this README
+- **Issues**: [GitHub Issues](https://github.com/your-repo/agent-dev-suite/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/your-repo/agent-dev-suite/discussions)
+
+### Common Issues
+- **Permission Errors**: Use `sudo` for system-level installations
+- **AI Service Limits**: Check API key configurations
+- **Environment Conflicts**: Use the provided setup scripts
+
+## 🎉 What's New
+
+### Version 2.0.0
+- 🔄 **Reorganized Structure**: New logical folder organization
+- 🤖 **Enhanced AI Workflows**: Improved simple and BMAD frameworks
+- 🛠️ **Updated Tools**: Latest configurations and automation
+- 📚 **Better Documentation**: Comprehensive guides and examples
+
+### Recent Updates
+- Added MCP server integrations
+- Enhanced BMAD framework with new agents
+- Improved environment setup scripts
+- Updated documentation structure
 
 ---
 
-**Made with ❤️ for developers who value automation, AI-assisted development, and clean workflows.**
+**Built with ❤️ for the AI-driven development community**
+
+Transform your development workflow with intelligent automation and AI assistance.
