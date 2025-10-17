@@ -32,6 +32,7 @@ Two comprehensive approaches to AI-assisted development:
 - Ideal for complex, production-grade applications
 
 ### 🛠️ Development Tools (`tools/`)
+- **📖 Complete Tools Guide**: [`tools_guide.md`](tools/tools_guide.md) - Comprehensive documentation with examples and quick start commands
 - **Automated installation scripts** for Tmux, Neovim, Lite XL
 - **Interactive dev tools menu** for easy setup
 - **Configuration files** and comprehensive guides
