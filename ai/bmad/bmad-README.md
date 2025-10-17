@@ -1,4 +1,4 @@
-# [BMAD-METHOD™]((https://github.com/bmad-code-org/BMAD-METHOD)): Universal AI Agent Framework
+# [BMAD-METHOD™](https://github.com/bmad-code-org/BMAD-METHOD): Universal AI Agent Framework
 
 > ## 🚨 **IMPORTANT VERSION ANNOUNCEMENT** 🚨
 >
