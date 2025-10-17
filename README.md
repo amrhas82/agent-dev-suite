@@ -85,9 +85,9 @@ This suite is designed for developers who want to:
 - [Environment Configuration](env/)
 
 ### AI Development
-- [Simple Workflow Guide](ai/simple/1-create-prd.md)
-- [BMAD Framework Documentation](ai/bmad/.bmad-core/user-guide.md)
-- [Agent Configuration](ai/bmad/.bmad-core/agents/)
+- [Simple Workflow Guide](ai/simple/ai_dev_tasks.md)
+- [BMAD Framework Documentation](ai/bmad/bmad-README.md)
+- [Agent Configuration](ai/bmad/agents/)
 
 ### Tools & Environment
 - [Development Tools Guide](tools/guides/)
