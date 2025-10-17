@@ -87,11 +87,11 @@ This suite is designed for developers who want to:
 ### AI Development
 - [Simple Workflow Guide](ai/simple/ai_dev_tasks.md)
 - [BMAD Framework Documentation](ai/bmad/bmad-README.md)
-- [Agent Configuration](ai/bmad/agents/)
+- [Role-based Agent Configuration](ai/bmad/agents/)
 
 ### Tools & Environment
 - [Development Tools Guide](tools/guides/)
-- [Window Manager Setup](env/tools/)
+- [Window Manager Setup](env/tools/README.md)
 - [System Administration](env/setup/)
 
 ### Integrations
@@ -175,9 +175,9 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## 🔗 Related Projects
 
-- [BMAD Framework](https://github.com/bmad-framework) - Core AI development framework
+- [BMAD Framework](https://github.com/bmad-code-org/BMAD-METHOD) - Core AI development framework
 - [MCP Protocol](https://modelcontextprotocol.io) - Model Context Protocol specifications
-- [Ubuntu Development Environment](https://ubuntu.com/desktop/developers) - Ubuntu development setup
+- [Zorin OS Development Environment](https://zorin.com/os/download/) - Ubuntu development setup
 
 ## 📊 Project Status
 
