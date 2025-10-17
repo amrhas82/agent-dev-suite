@@ -1,10 +1,10 @@
-# [BMAD-METHOD™](https://github.com/bmad-code-org/BMAD-METHOD): Universal AI Agent Framework
+# BMAD-METHOD™: Universal AI Agent Framework
 
 > ## 🚨 **IMPORTANT VERSION ANNOUNCEMENT** 🚨
 >
 > ### Current Stable: v4.x | Next Major: v6 Alpha
->
-> - **v4.x** - The current stable release version available via npm. [YouTube Setup](https://www.youtube.com/watch?v=fD8NLPU0WYU&t=445s)
+> - **[BMAD-METHOD™](https://github.com/bmad-code-org/BMAD-METHOD) |  [YouTube Setup](https://www.youtube.com/watch?v=fD8NLPU0WYU&t=445s)**
+> - **v4.x** - The current stable release version available via npm.
 > - **v5** - Skipped (replaced by v6)
 > - **[v6-alpha](https://github.com/bmad-code-org/BMAD-METHOD/tree/v6-alpha)** - **NOW AVAILABLE FOR EARLY TESTING!**
 >
