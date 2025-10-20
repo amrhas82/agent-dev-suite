@@ -87,6 +87,7 @@ This suite is designed for developers who want to:
 ### AI Development
 - [Simple Workflow Guide](ai/simple/ai_dev_tasks.md)
 - [BMAD Framework Documentation](ai/bmad/bmad-README.md)
+- [BMAD Knowledge Base](ai/bmad/.bmad-core/data/bmad-kb.md)
 - [Role-based Agent Configuration](ai/bmad/agents/)
 
 ### Tools & Environment
