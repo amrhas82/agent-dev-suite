@@ -34,10 +34,13 @@ Three comprehensive approaches to AI-assisted development:
 - Ideal for complex, production-grade applications
 
 #### Task Master (`ai/README-task-master.md`)
-- **Full AI team simulation**: PM, Analyst, Architect, Dev, QA, UX Expert
-- Role-based development with specialized agents
-- Comprehensive project management and quality gates
-- Ideal for complex, production-grade applications
+- **AI-powered task management system** for structured development workflows
+- **PRD-to-tasks automation**: Parse requirements into actionable, dependency-aware tasks
+- **MCP integration**: Works seamlessly with Cursor, Windsurf, VS Code, Claude Code
+- **Smart task expansion**: AI-driven complexity analysis and subtask generation
+- **Cross-platform CLI**: Works with multiple AI providers (Claude, GPT, Gemini, Perplexity, etc.)
+- **Dependency management**: Automatic task ordering and validation
+- Perfect for systematic feature development and maintaining development momentum
 
 ### 🛠️ Development Tools (`tools/`)
 - **📖 Complete Tools Guide**: [`tools_guide.md`](tools/tools_guide.md) - Comprehensive documentation with examples and quick start commands
@@ -134,12 +137,30 @@ cd ai/simple
 
 ### BMAD Framework
 ```bash
-# Work with a complete workflow 
+# Work with a complete workflow
 cd ai/bmad/bmm/workflows
 ./README.md
 
 # Configure agents
 ./bmb/bmad-builder.md
+```
+
+### Task Master
+```bash
+# Install globally
+npm install -g task-master-ai
+
+# Initialize in your project
+task-master init
+
+# Parse PRD and generate tasks
+task-master parse-prd scripts/prd.txt
+
+# Get next task and work on it
+task-master next
+
+# Or use via MCP in Cursor/VS Code
+# See ai/README-task-master.md for setup
 ```
 
 ### Environment Setup
