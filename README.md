@@ -11,7 +11,7 @@ cd agent-dev-suite/tools
 chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
 ```
 - ⭐ **[Star this repo](https://github.com/amrhas82/agent-dev-suite)** to get notified of updates
-- 💬 **[Join Discord](https://tinyurl.com/discochat)** to get help on vibecoding common struggles
+- 💬 **[Join Discord](https://discord.gg/SDaSrH3J8d)** to get help with your vibecoding struggles
 
 ### For AI-Assisted Development:
 - **Simple 3-step workflow**: See `ai/simple/`
