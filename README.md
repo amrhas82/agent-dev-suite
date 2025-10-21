@@ -124,13 +124,12 @@ cd ai/simple
 
 ### BMAD Framework
 ```bash
-# Initialize BMAD project
-cd ai/bmad/.bmad-core
-./user-guide.md
+# Work with a complete workflow 
+cd ai/bmad/bmm/workflows
+./README.md
 
 # Configure agents
-./agents/
-./workflows/
+./bmb/bmad-builder.md
 ```
 
 ### Environment Setup
