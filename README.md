@@ -20,7 +20,7 @@ chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
 ## 📁 What's Included
 
 ### 🤖 AI Workflows (`ai/`)
-Two comprehensive approaches to AI-assisted development:
+Three comprehensive approaches to AI-assisted development:
 
 #### Simple Workflow (`ai/simple/`)
 - **3-step process**: PRD → Tasks → Implementation
@@ -28,6 +28,12 @@ Two comprehensive approaches to AI-assisted development:
 - Streamlined agent guidance for rapid development
 
 #### BMAD Framework (`ai/bmad/`)
+- **Full AI team simulation**: PM, Analyst, Architect, Dev, QA, UX Expert
+- Role-based development with specialized agents
+- Comprehensive project management and quality gates
+- Ideal for complex, production-grade applications
+
+#### Task Master (`ai/README-task-master.md`)
 - **Full AI team simulation**: PM, Analyst, Architect, Dev, QA, UX Expert
 - Role-based development with specialized agents
 - Comprehensive project management and quality gates
@@ -86,11 +92,13 @@ This suite is designed for developers who want to:
 - [Installation Instructions](tools/README.md)
 - [Environment Configuration](env/)
 
-### AI Development
+### AI Guided Development
 - [Simple Workflow Guide](ai/simple/ai_dev_tasks.md)
-- [BMAD Framework Documentation](ai/bmad/bmad-README.md)
-- [BMAD Knowledge Base](ai/bmad/.bmad-core/data/bmad-kb.md)
-- [Role-based Agent Configuration](ai/bmad/agents/)
+- [BMAD Readme](ai/bmad/README.md)
+  - [Role-based Agent Configuration](ai/bmm/agents/)
+  - [Workflows](ai/bmm/workflows/)
+  - [Create your agent](ai/bmb/workflows/create-agent)
+- [Task Master](ai/README-task-master.md)
 
 ### Tools & Environment
 - [Development Tools Guide](tools/guides/)
