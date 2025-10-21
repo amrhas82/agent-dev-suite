@@ -79,9 +79,11 @@ This suite is designed for developers who want to:
 - Automate system setup and maintenance tasks
 
 ### 🤖 **AI-Driven Development**
-- Use AI agents to build features systematically
-- Implement role-based development workflows
+- Use AI agents to build features systematically with Task Master
+- Implement role-based development workflows (BMAD Framework)
 - Leverage specialized AI agents for different development phases
+- Parse PRDs into actionable, dependency-aware task lists
+- Integrate AI task management directly into your IDE (Cursor, VS Code, Windsurf)
 
 ### 🚀 **Productivity Enhancement**
 - Streamline development workflows with automation
@@ -180,12 +182,13 @@ cd tools
 agent-dev-suite/
 ├── ai/                          # AI workflows and agents
 │   ├── simple/                  # 3-step workflow
-│   └── bmad/                    # Full AI team framework
+│   ├── bmad/                    # Full AI team framework
+│   └── README-task-master.md    # Task Master guide & setup
 ├── env/                         # Environment configuration
 │   ├── setup/                   # System setup
 │   └── tools/                   # Development environments
 ├── tools/                       # Development utilities
-├── integrations/                # External integrations
+├── integrations/                # External integrations (MCP servers)
 └── docs/                        # Comprehensive documentation
 ```
 
@@ -215,6 +218,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 - ✅ **Environment Setup**: Complete with automated scripts
 - ✅ **Simple AI Workflow**: Ready for production use
 - ✅ **BMAD Framework**: Full implementation with all agents
+- ✅ **Task Master**: Integrated with MCP support for all major editors
 - ✅ **Integration Support**: MCP servers and external tools
 - 🔄 **Documentation**: Continuously improving
 - 🚧 **New Features**: Actively developing
@@ -240,10 +244,11 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 - 📚 **Better Documentation**: Comprehensive guides and examples
 
 ### Recent Updates
-- Added MCP server integrations
-- Enhanced BMAD framework with new agents
-- Improved environment setup scripts
-- Updated documentation structure
+- 🎯 **Task Master Integration**: Full MCP support for Cursor, VS Code, Windsurf, and Claude Code
+- 🔌 **MCP Server Integrations**: 200+ servers available
+- 🤖 **Enhanced BMAD Framework**: New agents and workflows
+- 🛠️ **Improved Environment Setup**: Updated scripts and automation
+- 📚 **Comprehensive Documentation**: Streamlined guides and examples
 
 ---
 
