@@ -40,7 +40,12 @@ Role-based subagents that can work with CLI, IDE, and web AI agents:
 - Core framework for BMAD methodology
 - Configurable agents and templates for various development scenarios
 
-**c. BMB - BMAD Builder (`ai/bmad/bmb/`)**
+**c. BMAD-OpenCode (`ai/bmad/bmad-opencode/`)**
+- Subagents ready for BMAD integration with OpenCode
+- Optimized configurations for OpenCode environment
+- Plug-and-play agent definitions
+
+**d. BMB - BMAD Builder (`ai/bmad/bmb/`)**
 - Build your own custom subagents
 - Agent creation and management workflows
 - Modular system for specialized agent development
@@ -114,6 +119,7 @@ This suite is designed for developers who want to:
 - [BMAD Framework](ai/bmad/README.md)
   - [BMAD-Claude Agents](ai/bmad/bmad-claude/agents/) - Ready-to-use Claude agents
   - [BMAD-Core Workflows](ai/bmad/bmad-core/workflows/) - Core framework workflows
+  - [BMAD-OpenCode Agents](ai/bmad/bmad-opencode/) - Ready-to-use OpenCode agents
   - [BMB Agent Builder](ai/bmad/bmb/workflows/create-agent/) - Create custom agents
 - [Task Master](ai/README-task-master.md)
 
@@ -154,6 +160,10 @@ cd ai/simple
 # Use ready-made Claude agents
 cd ai/bmad/bmad-claude
 # Copy to ~/.claude for immediate use
+
+# Use ready-made OpenCode agents
+cd ai/bmad/bmad-opencode
+# See AGENTS.md for setup instructions
 
 # Work with core framework
 cd ai/bmad/bmad-core
@@ -202,6 +212,7 @@ agent-dev-suite/
 │   ├── bmad/                    # BMAD framework with role-based agents
 │   │   ├── bmad-claude/         # Ready-to-use Claude agents
 │   │   ├── bmad-core/           # Core framework and dependencies
+│   │   ├── bmad-opencode/       # Ready-to-use OpenCode agents
 │   │   └── bmb/                 # BMAD Builder for custom agents
 │   └── README-task-master.md    # Task Master guide & setup
 ├── env/                         # Environment configuration
