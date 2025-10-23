@@ -23,15 +23,27 @@ chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
 Three comprehensive approaches to AI-assisted development:
 
 #### Simple Workflow (`ai/simple/`)
-- **3-step process**: PRD → Tasks → Implementation
+- **3-step process**: Create PRD → Generate Tasks → Process Task List
 - Perfect for features, small projects, and quick iterations
 - Streamlined agent guidance for rapid development
 
 #### BMAD Framework (`ai/bmad/`)
-- **Full AI team simulation**: PM, Analyst, Architect, Dev, QA, UX Expert
-- Role-based development with specialized agents
-- Comprehensive project management and quality gates
-- Ideal for complex, production-grade applications
+Role-based subagents that can work with CLI, IDE, and web AI agents:
+
+**a. BMAD-Claude (`ai/bmad/bmad-claude/`)**
+- Ready-to-use BMAD adapted roles for direct placement under `~/.claude`
+- Complete agent teams with all dependency folders included
+- Immediate deployment for Claude Code users
+
+**b. BMAD-Core (`ai/bmad/bmad-core/`)**
+- Complete dependency folders, scripts, and workflows
+- Core framework for BMAD methodology
+- Configurable agents and templates for various development scenarios
+
+**c. BMB - BMAD Builder (`ai/bmad/bmb/`)**
+- Build your own custom subagents
+- Agent creation and management workflows
+- Modular system for specialized agent development
 
 #### Task Master (`ai/README-task-master.md`)
 - **AI-powered task management system** for structured development workflows
@@ -99,10 +111,10 @@ This suite is designed for developers who want to:
 
 ### AI Guided Development
 - [Simple Workflow Guide](ai/simple/ai_dev_tasks.md)
-- [BMAD Readme](ai/bmad/README.md)
-  - [Role-based Agent Configuration](ai/bmm/agents/)
-  - [Workflows](ai/bmm/workflows/)
-  - [Create your agent](ai/bmb/workflows/create-agent)
+- [BMAD Framework](ai/bmad/README.md)
+  - [BMAD-Claude Agents](ai/bmad/bmad-claude/agents/) - Ready-to-use Claude agents
+  - [BMAD-Core Workflows](ai/bmad/bmad-core/workflows/) - Core framework workflows
+  - [BMB Agent Builder](ai/bmad/bmb/workflows/create-agent/) - Create custom agents
 - [Task Master](ai/README-task-master.md)
 
 ### Tools & Environment
@@ -139,12 +151,17 @@ cd ai/simple
 
 ### BMAD Framework
 ```bash
-# Work with a complete workflow
-cd ai/bmad/bmm/workflows
-./README.md
+# Use ready-made Claude agents
+cd ai/bmad/bmad-claude
+# Copy to ~/.claude for immediate use
 
-# Configure agents
-./bmb/bmad-builder.md
+# Work with core framework
+cd ai/bmad/bmad-core
+./user-guide.md
+
+# Build custom agents
+cd ai/bmad/bmb
+./README.md
 ```
 
 ### Task Master
@@ -181,8 +198,11 @@ cd tools
 ```
 agent-dev-suite/
 ├── ai/                          # AI workflows and agents
-│   ├── simple/                  # 3-step workflow
-│   ├── bmad/                    # Full AI team framework
+│   ├── simple/                  # 3-step workflow (PRD → Tasks → Process)
+│   ├── bmad/                    # BMAD framework with role-based agents
+│   │   ├── bmad-claude/         # Ready-to-use Claude agents
+│   │   ├── bmad-core/           # Core framework and dependencies
+│   │   └── bmb/                 # BMAD Builder for custom agents
 │   └── README-task-master.md    # Task Master guide & setup
 ├── env/                         # Environment configuration
 │   ├── setup/                   # System setup
