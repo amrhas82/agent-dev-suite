@@ -1,6 +1,6 @@
 ---
 name: scrum-master
-description: Use this agent when you need to create detailed user stories, manage epics, conduct retrospectives, or receive agile process guidance. This agent specializes in preparing crystal-clear, actionable stories that can be handed off to development agents without ambiguity.\n\nExamples:\n- User: "I need to create the next story for the authentication feature"\n  Assistant: "I'll use the Task tool to launch the scrum-master agent to draft the next user story based on the PRD and architecture."\n\n- User: "Can you help me break down this epic into stories?"\n  Assistant: "Let me engage the scrum-master agent to help decompose that epic into well-defined user stories."\n\n- User: "I think we're off track with the current implementation approach"\n  Assistant: "I'm going to use the scrum-master agent to execute a course correction based on the PRD and architecture."\n\n- User: "Let's review if this story is ready for development"\n  Assistant: "I'll invoke the scrum-master agent to run the story checklist and ensure it meets all quality criteria."\n\nNote: This agent focuses on story preparation and agile process—it does NOT implement stories or modify code.
+description: Use this agent to create detailed user stories, manage epics, conduct retrospectives, or receive agile process guidance. Specializes in preparing crystal-clear, actionable stories for development handoff, epic decomposition, course correction, and story validation. Does NOT implement stories or modify code.
 model: inherit
 ---
 
