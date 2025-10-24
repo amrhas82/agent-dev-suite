@@ -15,17 +15,24 @@ chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
 
 ### For AI-Assisted Development:
 - **Simple 3-step workflow**: See `ai/simple/`
+- **Claude-optimized agents**: See `ai/claude-subagents/`
 - **BMAD framework**: See `ai/bmad/`
 
 ## 📁 What's Included
 
 ### 🤖 AI Workflows (`ai/`)
-Three comprehensive approaches to AI-assisted development:
+Four comprehensive approaches to AI-assisted development:
 
 #### Simple Workflow (`ai/simple/`)
 - **3-step process**: Create PRD → Generate Tasks → Process Task List
 - Perfect for features, small projects, and quick iterations
 - Streamlined agent guidance for rapid development
+
+#### Claude Subagents (`ai/claude-subagents/`)
+- **BMAD + Simple hybrid**: Optimized mix of BMAD and Simple workflows adapted for Claude
+- **Context-optimized**: Compacted to save context while maintaining full functionality
+- **Ready-to-deploy**: Entire bundle can be copied directly to `~/.claude`
+- **Complete agent ecosystem**: All agents, teams, workflows, and dependencies included
 
 #### BMAD Framework (`ai/bmad/`)
 Role-based subagents that can work with CLI, IDE, and web AI agents:
@@ -116,6 +123,7 @@ This suite is designed for developers who want to:
 
 ### AI Guided Development
 - [Simple Workflow Guide](ai/simple/ai_dev_tasks.md)
+- [Claude Subagents](ai/claude-subagents/) - BMAD+Simple hybrid optimized for Claude
 - [BMAD Framework](ai/bmad/README.md)
   - [BMAD-Claude Agents](ai/bmad/bmad-claude/agents/) - Ready-to-use Claude agents
   - [BMAD-Core Workflows](ai/bmad/bmad-core/workflows/) - Core framework workflows
@@ -153,6 +161,13 @@ cd ai/simple
 
 # 3. Process Task List
 ./3-process-task-list.md
+```
+
+### Claude Subagents (BMAD+Simple Hybrid)
+```bash
+# Deploy optimized agents to Claude
+cp -r ai/claude-subagents/* ~/.claude/
+# Ready to use in Claude Code immediately
 ```
 
 ### BMAD Framework
@@ -209,6 +224,7 @@ cd tools
 agent-dev-suite/
 ├── ai/                          # AI workflows and agents
 │   ├── simple/                  # 3-step workflow (PRD → Tasks → Process)
+│   ├── claude-subagents/        # BMAD+Simple hybrid optimized for Claude
 │   ├── bmad/                    # BMAD framework with role-based agents
 │   │   ├── bmad-claude/         # Ready-to-use Claude agents
 │   │   ├── bmad-core/           # Core framework and dependencies
