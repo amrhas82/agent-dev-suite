@@ -106,9 +106,6 @@ files:
   - path: .bmad-core/tasks/nfr-assess.md
     hash: b9011d038b81a69b
     modified: false
-  - path: .bmad-core/tasks/kb-mode-interaction.md
-    hash: 4d6b921c24ba4999
-    modified: false
   - path: .bmad-core/tasks/index-docs.md
     hash: 70b1d526b19d015e
     modified: false
@@ -166,7 +163,6 @@ files:
   - path: .bmad-core/data/brainstorming-techniques.md
     hash: 62b0bf50648906b0
     modified: false
-  - path: .bmad-core/data/bmad-kb.md
     hash: c23a5fc5c6508c5c
     modified: false
   - path: .bmad-core/checklists/story-draft-checklist.md

@@ -288,8 +288,6 @@ dependencies:
   tasks:
     - create-doc.md
     - shard-doc.md
-  data:
-    - bmad-kb.md
 ```
 
 **Key Points:**

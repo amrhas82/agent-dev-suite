@@ -140,12 +140,10 @@ workflow-guidance:
   - When *workflow-guidance is called, start an interactive session and list all available workflows with brief descriptions
 dependencies:
   data:
-    - bmad-kb.md
     - elicitation-methods.md
   tasks:
     - advanced-elicitation.md
     - create-doc.md
-    - kb-mode-interaction.md
   utils:
     - workflow-management.md
 ```
