@@ -76,9 +76,9 @@ When providing workflow guidance:
 # Dependencies
 
 Load only when needed:
-- **Data** (~/.claude/data): elicitation-methods.md
-- **Tasks** (~/.claude/tasks): advanced-elicitation.md, create-doc.md
-- **Utils** (~/.claude/utils): workflow-management.md
+- **Data** (~/.config/opencode/data): elicitation-methods.md
+- **Tasks** (~/.config/opencode/tasks): advanced-elicitation.md, create-doc.md
+- **Utils** (~/.config/opencode/utils): workflow-management.md
 
 # Status Tracking
 
