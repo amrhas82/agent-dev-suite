@@ -141,8 +141,8 @@ curl -fsSL https://claude.ai/install.sh | bash
 ```
 
 **Features:**
-- AI-powered code suggestions
-- Natural language code generation
+- CLI AI-powered code suggestions
+- Supports subagents
 - Context-aware assistance
 - Multiple language support
 
@@ -173,6 +173,19 @@ amp --jetbrains
 - Project management tools
 - Team collaboration features
 
+
+### Opencode
+Open-source AI-powered CLI development environment.
+
+```bash
+curl -fsSL https://opencode.ai/install | bash
+```
+
+**Features:**
+- Preloaded with free tiers through openrouter
+- Supports subagents
+- Works with BYOK 70+ models
+- Team collaboration features
 ---
 
 ## Version Control Tools
