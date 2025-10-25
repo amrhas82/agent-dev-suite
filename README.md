@@ -35,6 +35,13 @@ Four comprehensive approaches to AI-assisted development:
 - **Direct deployment**: Entire folder contents can be copied to `~/.claude` and invoked via `/agent_name`
 - **Complete ecosystem**: All agents, teams, workflows, and dependencies included
 
+#### OpenCode Subagents (`ai/opencode-subagents/`)
+- **BMAD + Simple hybrid**: Same powerful agents as Claude subagents optimized for OpenCode
+- **Context-optimized**: Compacted to save context while maintaining full functionality
+- **Tested and proven**: Production-ready agents with validated workflows
+- **Direct deployment**: Entire folder contents can be copied to `~/.config/opencode` and invoked naturally
+- **Complete ecosystem**: All agents, teams, workflows, and dependencies included
+
 #### BMAD Method (`ai/bmad/`)
 BMAD framework with ready agents for Claude and OpenCode, supported by shared core files:
 
@@ -124,7 +131,8 @@ This suite is designed for developers who want to:
 
 ### AI Guided Development
 - [Simple Workflow Guide](ai/simple/ai_dev_tasks.md)
-- [Claude Subagents](ai/claude-subagents/) - BMAD+Simple hybrid tested for Claude
+- [Claude Subagents](ai/claude-subagents/) - BMAD+Simple hybrid tested and optimized for Claude
+- [OpenCode Subagents](ai/opencode-subagents/) - BMAD+Simple hybrid tested and optimized for OpenCode
 - [BMAD Method](ai/bmad/README.md)
   - [BMAD-Claude Agents](ai/bmad/bmad-claude/) - Ready-to-use Claude agents
   - [BMAD-OpenCode Agents](ai/bmad/bmad-opencode/) - Ready-to-use OpenCode agents
@@ -169,6 +177,13 @@ cd ai/simple
 # Deploy tested agents to Claude
 cp -r ai/claude-subagents/* ~/.claude/
 # Invoke agents directly with /agent_name in Claude Code
+```
+
+### OpenCode Subagents (BMAD+Simple Hybrid)
+```bash
+# Deploy tested agents to OpenCode
+cp -r ai/opencode-subagents/* ~/.config/opencode/
+# Invoke agents naturally with "As dev, ..." or role references
 ```
 
 ### BMAD Method
@@ -225,7 +240,8 @@ cd tools
 agent-dev-suite/
 ├── ai/                          # AI workflows and agents
 │   ├── simple/                  # 3-step workflow (PRD → Tasks → Process)
-│   ├── claude-subagents/        # BMAD+Simple hybrid optimized for Claude
+│   ├── claude-subagents/        # BMAD+Simple hybrid optimized for Claude subagents
+│   ├── opencode-subagents/      # BMAD+Simple hybrid optimized for OpenCode subagents
 │   ├── bmad/                    # BMAD method with ready agents
 │   │   ├── bmad-claude/         # Ready-to-use Claude agents
 │   │   ├── bmad-opencode/       # Ready-to-use OpenCode agents
