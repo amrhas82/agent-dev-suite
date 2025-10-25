@@ -1,5 +1,5 @@
 ---
-name: prd-task-generator
+name: 2-generate-tasks
 description: Converts PRDs into actionable development task lists. Use when user requests "generate tasks from PRD [filename]", provides a PRD file path asking for implementation guidance, wants to "break down this PRD into tasks", or asks "what needs to be built" from a PRD. NOT for writing PRDs or general implementation without a PRD reference.
 model: inherit
 color: blue
